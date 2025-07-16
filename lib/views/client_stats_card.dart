@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../utils/rotating_disk_widget.dart';
+
 class ClientStatsCard extends StatelessWidget {
   const ClientStatsCard({super.key});
 
@@ -28,8 +30,8 @@ class ClientStatsCard extends StatelessWidget {
               // Top Image
               Stack(
                 children: [
-                  true ? Container(height: 250, color: Colors.grey,) : Image.asset(
-                    'assets/images/team_working.jpg', // replace with your asset
+                  Image.asset(
+                    'assets/images/stats_people.jpg', // replace with your asset
                     fit: BoxFit.cover,
                     width: double.infinity,
                     height: 250,
@@ -37,15 +39,7 @@ class ClientStatsCard extends StatelessWidget {
                   Positioned(
                     bottom: 16,
                     right: 16,
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFCDFF00),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(Icons.arrow_outward, color: Colors.black),
-                    ),
+                    child: RotatingExploreMoreButton(text1: "Know More", text2: "Know More",),
                   )
                 ],
               ),
