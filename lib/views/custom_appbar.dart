@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -33,7 +34,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 _buildMenuItem('Services'),
                 _buildMenuItem('Projects'),
                 _buildMenuItem('Blog'),
-                _buildMenuItem('Contact Us', isLast: true),
+                _buildMenuItem('Contact Us'),
+                _buildMenuItem('About Us', isLast: true, onTap: () => Get.toNamed('/about')),
               ],
             ),
           ),
@@ -65,26 +67,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildMenuItem(String title, {bool isLast = false}) {
-    return Padding(
-      padding: EdgeInsets.only(right: isLast ? 0 : 24),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
+  Widget _buildMenuItem(String title, {bool isLast = false, VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.only(right: isLast ? 0 : 24),
+        child: Row(
+          children: [
+            Text(
+              title,
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          if (!isLast)
-            const Icon(Icons.arrow_drop_down, color: Colors.white, size: 18),
-        ],
+            if (!isLast)
+              const Icon(Icons.arrow_drop_down, color: Colors.white, size: 18),
+          ],
+        ),
       ),
     );
   }
-
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
