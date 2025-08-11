@@ -1,9 +1,14 @@
 import 'package:erudite/views/about_us/about_us.dart';
+import 'package:erudite/views/about_us/about_us_code_tea.dart';
+import 'package:erudite/views/about_us/about_us_screen.dart';
 import 'package:erudite/views/home_screen.dart';
 import 'package:erudite/views/landing_page.dart';
+import 'package:erudite/views/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'experiment/file1.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +47,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      // home: Body()
       home: LandingPage(),
+      // home: Screen(),
     );
   }
 }
