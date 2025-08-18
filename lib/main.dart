@@ -1,13 +1,18 @@
 import 'package:erudite/views/about_us/about_us.dart';
 import 'package:erudite/views/about_us/about_us_code_tea.dart';
-import 'package:erudite/views/about_us/about_us_screen.dart';
+import 'package:erudite/views/home/home_screen.dart';
 import 'package:erudite/views/home_screen.dart';
 import 'package:erudite/views/landing_page.dart';
+import 'package:erudite/views/portfolio/portfolio_screen.dart';
 import 'package:erudite/views/services/services.dart';
+import 'package:erudite/views/services_details/services_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'ai-based/home/home2.dart';
+import 'ai-based/home/home3.dart';
+import 'ai-based/home/home_page.dart';
 import 'experiment/file1.dart';
 
 void main() {
@@ -20,6 +25,8 @@ class MyApp extends StatelessWidget {
   final getPages = [
     GetPage(name: '/', page: () => const LandingPage()),
     GetPage(name: '/about', page: () => AboutUsPage()),
+    GetPage(name: '/home', page: () => HomeScreen()),
+
   ];
 
   @override
@@ -48,8 +55,16 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: Body()
-      home: LandingPage(),
+      // home: HomeScreen(),
       // home: Screen(),
+      // home: HomePageAI(),
+      // home: HomeScreen2(),
+      // home : HomeScreen3()  /// this is source for home screen
+      // home: AboutUsPage(),  /// this is source for about us
+      // home : ServiceHomeScreen() /// this is source for services screen
+      // home: ServicesDetailsScreen()
+        home : PorfolioHomeScreen()
+// home: Body()  // use few widget from here for about us
     );
   }
 }

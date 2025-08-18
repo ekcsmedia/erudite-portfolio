@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-class Screen extends StatefulWidget {
-  const Screen({super.key});
+class ServiceHomeScreen extends StatefulWidget {
+  const ServiceHomeScreen({super.key});
   @override
-  ScreenState createState() => ScreenState();
+  ServiceHomeScreenState createState() => ServiceHomeScreenState();
 }
-class ScreenState extends State<Screen> {
+class ServiceHomeScreenState extends State<ServiceHomeScreen> {
   String textField1 = '';
   @override
   Widget build(BuildContext context) {
