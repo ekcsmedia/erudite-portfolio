@@ -44,6 +44,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 _buildMenuItem('Home'),
                 _buildMenuItem('Pages'),
                 _buildMenuItem('Services', isLast: false, onTap: () => Get.toNamed('/services')),
+                _buildMenuItem('Services Details', isLast: false, onTap: () => Get.toNamed('/services-details')),
                 _buildMenuItem('Projects'),
                 _buildMenuItem('Blog'),
                 _buildMenuItem('Contact Us', isLast: false, onTap: () => Get.toNamed('/contact-us')),

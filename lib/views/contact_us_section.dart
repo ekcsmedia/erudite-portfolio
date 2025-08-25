@@ -17,16 +17,8 @@ class ContactUsBanner extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // Left image or illustration
-          true ? Container(
-            width: 200,
-            color: Colors.blue[100],
-            alignment: Alignment.center,
-            child: Text(
-              'Image Here',
-              style: GoogleFonts.poppins(color: Colors.blue),
-            ),
-          ) : Image.asset(
-            'assets/images/contact_support.png', // Replace with your asset
+          Image.asset(
+            'assets/images/contact-img.png', // Replace with your asset
             width: 200,
           ),
 
@@ -39,7 +31,7 @@ class ContactUsBanner extends StatelessWidget {
               children: [
                 Chip(
                   label: Text("CONTACT US"),
-                  backgroundColor: Colors.white.withOpacity(0.1),
+                  backgroundColor: Color(0xFF6C4DF4),
                   labelStyle: const TextStyle(color: Colors.white),
                 ),
                 const SizedBox(height: 12),

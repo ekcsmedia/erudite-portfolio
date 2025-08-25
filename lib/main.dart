@@ -5,7 +5,8 @@ import 'package:erudite/views/home/home_screen.dart';
 import 'package:erudite/views/home_screen.dart';
 import 'package:erudite/views/landing_page.dart';
 import 'package:erudite/views/portfolio/portfolio_screen.dart';
-import 'package:erudite/views/services/services.dart';
+import 'package:erudite/views/services/services_old.dart';
+import 'package:erudite/views/services/services_screen.dart';
 import 'package:erudite/views/services_details/services_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'ai-based/home/home2.dart';
 import 'ai-based/home/home3.dart';
 import 'ai-based/home/home_page.dart';
+import 'ai-based/home/our_services_section3.dart';
 import 'experiment/file1.dart';
 import 'dart:ui_web' as ui; // <-- NEW import
 import 'dart:html' show IFrameElement; // explicitly import only IFrameElement
@@ -45,7 +47,8 @@ class MyApp extends StatelessWidget {
     GetPage(name: '/about', page: () => AboutUsPage()),
     GetPage(name: '/home', page: () => HomeScreen()),
     GetPage(name: '/contact-us', page: () => ContactUs()),
-    GetPage(name: '/services', page: () => ServiceHomeScreen())
+    GetPage(name: '/services', page: () => ServicesScreen()),
+    GetPage(name: '/services-details', page: () => ServicesDetailsScreen())
   ];
 
   @override
@@ -53,7 +56,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Digtek',
       debugShowCheckedModeBanner: false,
-      // initialRoute: "/",
+      initialRoute: "/",
       getPages: getPages,
       theme: ThemeData(
         primaryColor: const Color(0xFF6B48ED), // Bright purple
@@ -84,7 +87,7 @@ class MyApp extends StatelessWidget {
       // home : ServiceHomeScreen() /// this is source for services screen
       // home: ServicesDetailsScreen()
       //   home : PorfolioHomeScreen()
-// home: Body()  // use few widget from here for about us
+// home: HomeScreen()  // use few widget from here for about us
     );
   }
 }
