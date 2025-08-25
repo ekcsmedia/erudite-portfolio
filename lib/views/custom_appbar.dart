@@ -14,10 +14,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         children: [
-          const Icon(Icons.blur_on, color: Colors.white, size: 28),
-          const SizedBox(width: 8),
+          Container(
+            width: 36,
+            height: 36,
+            padding: const EdgeInsets.all(6), // inner padding around logo
+            decoration: BoxDecoration(
+              color: Colors.white,             // white background
+              borderRadius: BorderRadius.circular(8), // rounded corners
+            ),
+            child: Image.asset(
+              'assets/images/logo.png',
+              height: 32,                      // adjust size
+              fit: BoxFit.contain,
+            ),
+          ),        const SizedBox(width: 8),
           Text(
-            'Digtek',
+            'Erudite',
             style: GoogleFonts.poppins(
               color: Colors.white,
               fontSize: 20,
@@ -31,10 +43,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 _buildMenuItem('Home'),
                 _buildMenuItem('Pages'),
-                _buildMenuItem('Services'),
+                _buildMenuItem('Services', isLast: false, onTap: () => Get.toNamed('/services')),
                 _buildMenuItem('Projects'),
                 _buildMenuItem('Blog'),
-                _buildMenuItem('Contact Us'),
+                _buildMenuItem('Contact Us', isLast: false, onTap: () => Get.toNamed('/contact-us')),
                 _buildMenuItem('About Us', isLast: true, onTap: () => Get.toNamed('/about')),
               ],
             ),
