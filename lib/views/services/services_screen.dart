@@ -20,749 +20,941 @@ class ServicesScreen extends StatelessWidget {
           color: const Color(0xFFFFFFFF),
           padding: const EdgeInsets.all(16), // optional
           child: Column(
-          children: [
-            AboutUsBanner(),
-            IntrinsicHeight(
-              child: Container(
-                padding: const EdgeInsets.only( top: 120, bottom: 120, left: 13, right: 13),
-                width: double.infinity,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IntrinsicHeight(
-                        child: Container(
-                          margin: const EdgeInsets.only( bottom: 24, left: 12, right: 12),
-                          width: double.infinity,
-                          child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                IntrinsicWidth(
-                                  child: IntrinsicHeight(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Color(0xFFE5E5E5),
-                                          width: 1,
+            children: [
+              AboutUsBanner(),
+              IntrinsicHeight(
+                child: Container(
+                  padding: const EdgeInsets.only(
+                      top: 120, bottom: 120, left: 13, right: 13),
+                  width: double.infinity,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        IntrinsicHeight(
+                          child: Container(
+                            margin: const EdgeInsets.only(
+                                bottom: 24, left: 12, right: 12),
+                            width: double.infinity,
+                            child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  IntrinsicWidth(
+                                    child: IntrinsicHeight(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color(0xFFE5E5E5),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(vertical: 42),
-                                      margin: const EdgeInsets.only( right: 83),
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.symmetric(horizontal: 22),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                            decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(20),
-                                                            ),
-                                                            margin: const EdgeInsets.only( right: 17),
-                                                            width: 60,
-                                                            height: 51,
-                                                            child: ClipRRect(
-                                                                borderRadius: BorderRadius.circular(20),
-                                                                child: Image.network(
-                                                                  "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/fyvcgtk0_expires_30_days.png",
-                                                                  fit: BoxFit.fill,
-                                                                )
-                                                            )
-                                                        ),
-                                                        IntrinsicWidth(
-                                                          child: IntrinsicHeight(
-                                                            child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                children: [
-                                                                  Container(
-                                                                    margin: const EdgeInsets.only( bottom: 4),
-                                                                    child: Text(
-                                                                      "Digital Marketing",
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF17012C),
-                                                                        fontSize: 22,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    "Lorem dolor amet consectetur read ",
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF504E4E),
-                                                                      fontSize: 15,
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                            ),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 42),
+                                        margin:
+                                            const EdgeInsets.only(right: 83),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 22),
+                                                    child: Row(children: [
+                                                      Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20),
                                                           ),
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  right: 17),
+                                                          width: 60,
+                                                          height: 51,
+                                                          child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                              child:
+                                                                  Image.network(
+                                                                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/fyvcgtk0_expires_30_days.png",
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                              ))),
+                                                      IntrinsicWidth(
+                                                        child: IntrinsicHeight(
+                                                          child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Container(
+                                                                  margin:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              4),
+                                                                  child: Text(
+                                                                    "Digital Marketing",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Color(
+                                                                          0xFF17012C),
+                                                                      fontSize:
+                                                                          22,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  "Lorem dolor amet consectetur read ",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Color(
+                                                                        0xFF504E4E),
+                                                                    fontSize:
+                                                                        15,
+                                                                  ),
+                                                                ),
+                                                              ]),
                                                         ),
-                                                      ]
+                                                      ),
+                                                    ]),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only( bottom: 4, left: 99, right: 99),
-                                              child: Text(
-                                                "adipiscing any more elit.",
-                                                style: TextStyle(
-                                                  color: Color(0xFF504E4E),
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.only( left: 99),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                          margin: const EdgeInsets.only( right: 15),
-                                                          child: Text(
-                                                            "Read More ",
-                                                            style: TextStyle(
-                                                              color: Color(0xFF17012C),
-                                                              fontSize: 14,
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                            width: 14,
-                                                            height: 14,
-                                                            child: Image.network(
-                                                              "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/x5namhzh_expires_30_days.png",
-                                                              fit: BoxFit.fill,
-                                                            )
-                                                        ),
-                                                      ]
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 4,
+                                                    left: 99,
+                                                    right: 99),
+                                                child: Text(
+                                                  "adipiscing any more elit.",
+                                                  style: TextStyle(
+                                                    color: Color(0xFF504E4E),
+                                                    fontSize: 15,
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ]
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 99),
+                                                    child: Row(children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(right: 15),
+                                                        child: Text(
+                                                          "Read More ",
+                                                          style: TextStyle(
+                                                            color: Color(
+                                                                0xFF17012C),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                          width: 14,
+                                                          height: 14,
+                                                          child: Image.network(
+                                                            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/x5namhzh_expires_30_days.png",
+                                                            fit: BoxFit.fill,
+                                                          )),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
                                       ),
                                     ),
                                   ),
-                                ),
-                                IntrinsicWidth(
-                                  child: IntrinsicHeight(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Color(0xFFE5E5E5),
-                                          width: 1,
+                                  IntrinsicWidth(
+                                    child: IntrinsicHeight(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color(0xFFE5E5E5),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
-                                        borderRadius: BorderRadius.circular(20),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 42),
+                                        margin:
+                                            const EdgeInsets.only(right: 83),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 22),
+                                                    child: Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                              ),
+                                                              margin:
+                                                                  const EdgeInsets
+                                                                      .only(
+                                                                      right:
+                                                                          17),
+                                                              width: 60,
+                                                              height: 50,
+                                                              child: ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20),
+                                                                  child: Image
+                                                                      .network(
+                                                                    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/3x0ctngf_expires_30_days.png",
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  ))),
+                                                          IntrinsicWidth(
+                                                            child:
+                                                                IntrinsicHeight(
+                                                              child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Container(
+                                                                      margin: const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              4),
+                                                                      child:
+                                                                          Text(
+                                                                        "SEO Analytics",
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xFF17012C),
+                                                                          fontSize:
+                                                                              22,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      "Lorem dolor amet consectetur read ",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Color(
+                                                                            0xFF504E4E),
+                                                                        fontSize:
+                                                                            15,
+                                                                      ),
+                                                                    ),
+                                                                  ]),
+                                                            ),
+                                                          ),
+                                                        ]),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 4,
+                                                    left: 99,
+                                                    right: 99),
+                                                child: Text(
+                                                  "adipiscing any more elit.",
+                                                  style: TextStyle(
+                                                    color: Color(0xFF504E4E),
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 99),
+                                                    child: Row(children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(right: 15),
+                                                        child: Text(
+                                                          "Read More ",
+                                                          style: TextStyle(
+                                                            color: Color(
+                                                                0xFF17012C),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                          width: 14,
+                                                          height: 14,
+                                                          child: Image.network(
+                                                            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/p9ik9h8i_expires_30_days.png",
+                                                            fit: BoxFit.fill,
+                                                          )),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
                                       ),
-                                      padding: const EdgeInsets.symmetric(vertical: 42),
-                                      margin: const EdgeInsets.only( right: 83),
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: IntrinsicHeight(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color(0xFFE5E5E5),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 42),
+                                        margin: const EdgeInsets.only(right: 4),
+                                        width: double.infinity,
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              IntrinsicHeight(
                                                 child: Container(
-                                                  margin: const EdgeInsets.symmetric(horizontal: 22),
+                                                  margin: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 22),
+                                                  width: double.infinity,
                                                   child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Container(
-                                                            decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(20),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
                                                             ),
-                                                            margin: const EdgeInsets.only( right: 17),
+                                                            margin:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    right: 17),
                                                             width: 60,
                                                             height: 50,
                                                             child: ClipRRect(
-                                                                borderRadius: BorderRadius.circular(20),
-                                                                child: Image.network(
-                                                                  "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/3x0ctngf_expires_30_days.png",
-                                                                  fit: BoxFit.fill,
-                                                                )
-                                                            )
-                                                        ),
-                                                        IntrinsicWidth(
-                                                          child: IntrinsicHeight(
-                                                            child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                children: [
-                                                                  Container(
-                                                                    margin: const EdgeInsets.only( bottom: 4),
-                                                                    child: Text(
-                                                                      "SEO Analytics",
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF17012C),
-                                                                        fontSize: 22,
-                                                                        fontWeight: FontWeight.bold,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                                child: Image
+                                                                    .network(
+                                                                  "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/cie6vker_expires_30_days.png",
+                                                                  fit: BoxFit
+                                                                      .fill,
+                                                                ))),
+                                                        Expanded(
+                                                          child:
+                                                              IntrinsicHeight(
+                                                            child: Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Container(
+                                                                      margin: const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              4),
+                                                                      child:
+                                                                          Text(
+                                                                        "Social Marketing",
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xFF17012C),
+                                                                          fontSize:
+                                                                              22,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Text(
-                                                                    "Lorem dolor amet consectetur read ",
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF504E4E),
-                                                                      fontSize: 15,
+                                                                    Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      child:
+                                                                          Text(
+                                                                        "Lorem dolor amet consectetur read ",
+                                                                        style:
+                                                                            TextStyle(
+                                                                          color:
+                                                                              Color(0xFF504E4E),
+                                                                          fontSize:
+                                                                              15,
+                                                                        ),
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                ]
+                                                                  ]),
                                                             ),
                                                           ),
                                                         ),
-                                                      ]
-                                                  ),
+                                                      ]),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only( bottom: 4, left: 99, right: 99),
-                                              child: Text(
-                                                "adipiscing any more elit.",
-                                                style: TextStyle(
-                                                  color: Color(0xFF504E4E),
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.only( left: 99),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                          margin: const EdgeInsets.only( right: 15),
-                                                          child: Text(
-                                                            "Read More ",
-                                                            style: TextStyle(
-                                                              color: Color(0xFF17012C),
-                                                              fontSize: 14,
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                            width: 14,
-                                                            height: 14,
-                                                            child: Image.network(
-                                                              "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/p9ik9h8i_expires_30_days.png",
-                                                              fit: BoxFit.fill,
-                                                            )
-                                                        ),
-                                                      ]
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: IntrinsicHeight(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Color(0xFFE5E5E5),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(vertical: 42),
-                                      margin: const EdgeInsets.only( right: 4),
-                                      width: double.infinity,
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            IntrinsicHeight(
-                                              child: Container(
-                                                margin: const EdgeInsets.symmetric(horizontal: 22),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 4,
+                                                    left: 99,
+                                                    right: 99),
                                                 width: double.infinity,
-                                                child: Row(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Container(
-                                                          decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(20),
-                                                          ),
-                                                          margin: const EdgeInsets.only( right: 17),
-                                                          width: 60,
-                                                          height: 50,
-                                                          child: ClipRRect(
-                                                              borderRadius: BorderRadius.circular(20),
-                                                              child: Image.network(
-                                                                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/cie6vker_expires_30_days.png",
-                                                                fit: BoxFit.fill,
-                                                              )
-                                                          )
-                                                      ),
-                                                      Expanded(
-                                                        child: IntrinsicHeight(
-                                                          child: Container(
-                                                            width: double.infinity,
-                                                            child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                children: [
-                                                                  Container(
-                                                                    margin: const EdgeInsets.only( bottom: 4),
-                                                                    child: Text(
-                                                                      "Social Marketing",
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF17012C),
-                                                                        fontSize: 22,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-                                                                    width: double.infinity,
-                                                                    child: Text(
-                                                                      "Lorem dolor amet consectetur read ",
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF504E4E),
-                                                                        fontSize: 15,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ]
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only( bottom: 4, left: 99, right: 99),
-                                              width: double.infinity,
-                                              child: Text(
-                                                "adipiscing any more elit.",
-                                                style: TextStyle(
-                                                  color: Color(0xFF504E4E),
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.only( left: 99),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                          margin: const EdgeInsets.only( right: 15),
-                                                          child: Text(
-                                                            "Read More ",
-                                                            style: TextStyle(
-                                                              color: Color(0xFF17012C),
-                                                              fontSize: 14,
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                            width: 14,
-                                                            height: 14,
-                                                            child: Image.network(
-                                                              "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/sc6f7lvs_expires_30_days.png",
-                                                              fit: BoxFit.fill,
-                                                            )
-                                                        ),
-                                                      ]
+                                                child: Text(
+                                                  "adipiscing any more elit.",
+                                                  style: TextStyle(
+                                                    color: Color(0xFF504E4E),
+                                                    fontSize: 15,
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ]
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 99),
+                                                    child: Row(children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(right: 15),
+                                                        child: Text(
+                                                          "Read More ",
+                                                          style: TextStyle(
+                                                            color: Color(
+                                                                0xFF17012C),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                          width: 14,
+                                                          height: 14,
+                                                          child: Image.network(
+                                                            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/sc6f7lvs_expires_30_days.png",
+                                                            fit: BoxFit.fill,
+                                                          )),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
                                       ),
                                     ),
                                   ),
-                                ),
-                                // Container(
-                                //     margin: const EdgeInsets.only( top: 129),
-                                //     width: 50,
-                                //     height: 50,
-                                //     child: Image.network(
-                                //       "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/7sddtodb_expires_30_days.png",
-                                //       fit: BoxFit.fill,
-                                //     )
-                                // ),
-                              ]
+                                  // Container(
+                                  //     margin: const EdgeInsets.only( top: 129),
+                                  //     width: 50,
+                                  //     height: 50,
+                                  //     child: Image.network(
+                                  //       "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/7sddtodb_expires_30_days.png",
+                                  //       fit: BoxFit.fill,
+                                  //     )
+                                  // ),
+                                ]),
                           ),
                         ),
-                      ),
-                      IntrinsicHeight(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                          width: double.infinity,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                IntrinsicWidth(
-                                  child: IntrinsicHeight(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Color(0xFFE5E5E5),
-                                          width: 1,
+                        IntrinsicHeight(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 12),
+                            width: double.infinity,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  IntrinsicWidth(
+                                    child: IntrinsicHeight(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color(0xFFE5E5E5),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(vertical: 42),
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.symmetric(horizontal: 22),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                            decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(20),
-                                                            ),
-                                                            margin: const EdgeInsets.only( right: 17),
-                                                            width: 60,
-                                                            height: 51,
-                                                            child: ClipRRect(
-                                                                borderRadius: BorderRadius.circular(20),
-                                                                child: Image.network(
-                                                                  "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/y5xb0i6b_expires_30_days.png",
-                                                                  fit: BoxFit.fill,
-                                                                )
-                                                            )
-                                                        ),
-                                                        IntrinsicWidth(
-                                                          child: IntrinsicHeight(
-                                                            child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                children: [
-                                                                  Container(
-                                                                    margin: const EdgeInsets.only( bottom: 4),
-                                                                    child: Text(
-                                                                      "Email Marketing",
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF17012C),
-                                                                        fontSize: 22,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    "Lorem dolor amet consectetur read ",
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF504E4E),
-                                                                      fontSize: 15,
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ]
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only( bottom: 4, left: 99, right: 99),
-                                              child: Text(
-                                                "adipiscing any more elit.",
-                                                style: TextStyle(
-                                                  color: Color(0xFF504E4E),
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.only( left: 99),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                          margin: const EdgeInsets.only( right: 15),
-                                                          child: Text(
-                                                            "Read More ",
-                                                            style: TextStyle(
-                                                              color: Color(0xFF17012C),
-                                                              fontSize: 14,
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                            width: 14,
-                                                            height: 14,
-                                                            child: Image.network(
-                                                              "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/5c7n2yo1_expires_30_days.png",
-                                                              fit: BoxFit.fill,
-                                                            )
-                                                        ),
-                                                      ]
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                IntrinsicWidth(
-                                  child: IntrinsicHeight(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Color(0xFFE5E5E5),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(vertical: 42),
-                                      child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.symmetric(horizontal: 22),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                            decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(20),
-                                                            ),
-                                                            margin: const EdgeInsets.only( right: 17),
-                                                            width: 60,
-                                                            height: 51,
-                                                            child: ClipRRect(
-                                                                borderRadius: BorderRadius.circular(20),
-                                                                child: Image.network(
-                                                                  "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/i8nmxlf5_expires_30_days.png",
-                                                                  fit: BoxFit.fill,
-                                                                )
-                                                            )
-                                                        ),
-                                                        IntrinsicWidth(
-                                                          child: IntrinsicHeight(
-                                                            child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                children: [
-                                                                  Container(
-                                                                    margin: const EdgeInsets.only( bottom: 4),
-                                                                    child: Text(
-                                                                      "Social Media Marketing",
-                                                                      style: TextStyle(
-                                                                        color: Color(0xFF17012C),
-                                                                        fontSize: 22,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    "Lorem dolor amet consectetur read ",
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF504E4E),
-                                                                      fontSize: 15,
-                                                                    ),
-                                                                  ),
-                                                                ]
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ]
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              margin: const EdgeInsets.only( bottom: 4, left: 99, right: 99),
-                                              child: Text(
-                                                "adipiscing any more elit.",
-                                                style: TextStyle(
-                                                  color: Color(0xFF504E4E),
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ),
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Container(
-                                                  margin: const EdgeInsets.only( left: 99),
-                                                  child: Row(
-                                                      children: [
-                                                        Container(
-                                                          margin: const EdgeInsets.only( right: 15),
-                                                          child: Text(
-                                                            "Read More ",
-                                                            style: TextStyle(
-                                                              color: Color(0xFF17012C),
-                                                              fontSize: 14,
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                            width: 14,
-                                                            height: 14,
-                                                            child: Image.network(
-                                                              "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/474e5hva_expires_30_days.png",
-                                                              fit: BoxFit.fill,
-                                                            )
-                                                        ),
-                                                      ]
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                IntrinsicWidth(
-                                  child: IntrinsicHeight(
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: Color(0xFFE5E5E5),
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      padding: const EdgeInsets.only( top: 41, bottom: 41, left: 21, right: 21),
-                                      child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(20),
-                                                ),
-                                                margin: const EdgeInsets.only( top: 6, right: 17),
-                                                width: 24,
-                                                height: 21,
-                                                child: ClipRRect(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    child: Image.network(
-                                                      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/b2aquqmm_expires_30_days.png",
-                                                      fit: BoxFit.fill,
-                                                    )
-                                                )
-                                            ),
-                                            IntrinsicWidth(
-                                              child: IntrinsicHeight(
-                                                child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 42),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 22),
+                                                    child: Row(children: [
                                                       Container(
-                                                        margin: const EdgeInsets.only( bottom: 4),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20),
+                                                          ),
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  right: 17),
+                                                          width: 60,
+                                                          height: 51,
+                                                          child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                              child:
+                                                                  Image.network(
+                                                                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/y5xb0i6b_expires_30_days.png",
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                              ))),
+                                                      IntrinsicWidth(
+                                                        child: IntrinsicHeight(
+                                                          child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Container(
+                                                                  margin:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              4),
+                                                                  child: Text(
+                                                                    "Email Marketing",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Color(
+                                                                          0xFF17012C),
+                                                                      fontSize:
+                                                                          22,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  "Lorem dolor amet consectetur read ",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Color(
+                                                                        0xFF504E4E),
+                                                                    fontSize:
+                                                                        15,
+                                                                  ),
+                                                                ),
+                                                              ]),
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 4,
+                                                    left: 99,
+                                                    right: 99),
+                                                child: Text(
+                                                  "adipiscing any more elit.",
+                                                  style: TextStyle(
+                                                    color: Color(0xFF504E4E),
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 99),
+                                                    child: Row(children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(right: 15),
                                                         child: Text(
-                                                          "Better audiences",
+                                                          "Read More ",
                                                           style: TextStyle(
-                                                            color: Color(0xFF17012C),
-                                                            fontSize: 22,
-                                                            fontWeight: FontWeight.bold,
+                                                            color: Color(
+                                                                0xFF17012C),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.bold,
                                                           ),
                                                         ),
                                                       ),
-                                                      Text(
-                                                        "Lorem dolor amet consectetur read adipiscing ",
-                                                        style: TextStyle(
-                                                          color: Color(0xFF504E4E),
-                                                          fontSize: 15,
+                                                      Container(
+                                                          width: 14,
+                                                          height: 14,
+                                                          child: Image.network(
+                                                            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/5c7n2yo1_expires_30_days.png",
+                                                            fit: BoxFit.fill,
+                                                          )),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
+                                      ),
+                                    ),
+                                  ),
+                                  IntrinsicWidth(
+                                    child: IntrinsicHeight(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color(0xFFE5E5E5),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 42),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 22),
+                                                    child: Row(children: [
+                                                      Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20),
+                                                          ),
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  right: 17),
+                                                          width: 60,
+                                                          height: 51,
+                                                          child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                              child:
+                                                                  Image.network(
+                                                                "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/i8nmxlf5_expires_30_days.png",
+                                                                fit:
+                                                                    BoxFit.fill,
+                                                              ))),
+                                                      IntrinsicWidth(
+                                                        child: IntrinsicHeight(
+                                                          child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Container(
+                                                                  margin:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                          bottom:
+                                                                              4),
+                                                                  child: Text(
+                                                                    "Social Media Marketing",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Color(
+                                                                          0xFF17012C),
+                                                                      fontSize:
+                                                                          22,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  "Lorem dolor amet consectetur read ",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Color(
+                                                                        0xFF504E4E),
+                                                                    fontSize:
+                                                                        15,
+                                                                  ),
+                                                                ),
+                                                              ]),
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 4,
+                                                    left: 99,
+                                                    right: 99),
+                                                child: Text(
+                                                  "adipiscing any more elit.",
+                                                  style: TextStyle(
+                                                    color: Color(0xFF504E4E),
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              ),
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Container(
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            left: 99),
+                                                    child: Row(children: [
+                                                      Container(
+                                                        margin: const EdgeInsets
+                                                            .only(right: 15),
+                                                        child: Text(
+                                                          "Read More ",
+                                                          style: TextStyle(
+                                                            color: Color(
+                                                                0xFF17012C),
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
                                                         ),
                                                       ),
                                                       Container(
-                                                        margin: const EdgeInsets.only( bottom: 4),
-                                                        child: Text(
-                                                          "any more elit.",
+                                                          width: 14,
+                                                          height: 14,
+                                                          child: Image.network(
+                                                            "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/474e5hva_expires_30_days.png",
+                                                            fit: BoxFit.fill,
+                                                          )),
+                                                    ]),
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
+                                      ),
+                                    ),
+                                  ),
+                                  IntrinsicWidth(
+                                    child: IntrinsicHeight(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: Color(0xFFE5E5E5),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        padding: const EdgeInsets.only(
+                                            top: 41,
+                                            bottom: 41,
+                                            left: 21,
+                                            right: 21),
+                                        child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                  ),
+                                                  margin: const EdgeInsets.only(
+                                                      top: 6, right: 17),
+                                                  width: 24,
+                                                  height: 21,
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      child: Image.network(
+                                                        "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/b2aquqmm_expires_30_days.png",
+                                                        fit: BoxFit.fill,
+                                                      ))),
+                                              IntrinsicWidth(
+                                                child: IntrinsicHeight(
+                                                  child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  bottom: 4),
+                                                          child: Text(
+                                                            "Better audiences",
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF17012C),
+                                                              fontSize: 22,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          "Lorem dolor amet consectetur read adipiscing ",
                                                           style: TextStyle(
-                                                            color: Color(0xFF504E4E),
+                                                            color: Color(
+                                                                0xFF504E4E),
                                                             fontSize: 15,
                                                           ),
                                                         ),
-                                                      ),
-                                                      IntrinsicWidth(
-                                                        child: IntrinsicHeight(
-                                                          child: Row(
-                                                              children: [
-                                                                Container(
-                                                                  margin: const EdgeInsets.only( right: 15),
-                                                                  child: Text(
-                                                                    "Read More ",
-                                                                    style: TextStyle(
-                                                                      color: Color(0xFF17012C),
-                                                                      fontSize: 14,
-                                                                      fontWeight: FontWeight.bold,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Container(
-                                                                    width: 14,
-                                                                    height: 14,
-                                                                    child: Image.network(
-                                                                      "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/9dq2vi4m_expires_30_days.png",
-                                                                      fit: BoxFit.fill,
-                                                                    )
-                                                                ),
-                                                              ]
+                                                        Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  bottom: 4),
+                                                          child: Text(
+                                                            "any more elit.",
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF504E4E),
+                                                              fontSize: 15,
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ]
+                                                        IntrinsicWidth(
+                                                          child:
+                                                              IntrinsicHeight(
+                                                            child:
+                                                                Row(children: [
+                                                              Container(
+                                                                margin:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                        right:
+                                                                            15),
+                                                                child: Text(
+                                                                  "Read More ",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: Color(
+                                                                        0xFF17012C),
+                                                                    fontSize:
+                                                                        14,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                  width: 14,
+                                                                  height: 14,
+                                                                  child: Image
+                                                                      .network(
+                                                                    "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/ldwNOzUWx0/9dq2vi4m_expires_30_days.png",
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                  )),
+                                                            ]),
+                                                          ),
+                                                        ),
+                                                      ]),
                                                 ),
                                               ),
-                                            ),
-                                          ]
+                                            ]),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ]
+                                ]),
                           ),
                         ),
-                      ),
-                    ]
+                      ]),
                 ),
               ),
-            ),
-            AwesomeSection(),
-            ContactUsBanner(),
-            TestimonialSectionServices(),
-            FooterSection(),
-          ],
+              AwesomeSection(),
+              ContactUsBanner(),
+              TestimonialSectionServices(),
+              FooterSection(),
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
 }
 
 TextStyle headingStyle() => GoogleFonts.poppins(
-  fontSize: 28,
-  fontWeight: FontWeight.bold,
-  color: Colors.black87,
-);
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      color: Colors.black87,
+    );
 
 TextStyle subHeadingStyle() => GoogleFonts.poppins(
-  fontSize: 18,
-  fontWeight: FontWeight.w500,
-  color: Colors.black54,
-);
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: Colors.black54,
+    );
 
 TextStyle normalText() => GoogleFonts.poppins(
-  fontSize: 14,
-  color: Colors.black54,
-);
+      fontSize: 14,
+      color: Colors.black54,
+    );
 
 // ================= HERO ==================
 
@@ -822,7 +1014,7 @@ class AboutUsBanner extends StatelessWidget {
                   // Breadcrumb
                   Container(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple, width: 1.5),
                       borderRadius: BorderRadius.circular(50),
@@ -842,10 +1034,10 @@ class AboutUsBanner extends StatelessWidget {
                             ),
                           ),
                           const WidgetSpan(
-                            alignment: PlaceholderAlignment.middle, // ✅ align with text
+                            alignment: PlaceholderAlignment
+                                .middle, // ✅ align with text
                             child: Padding(
-                              padding:
-                              EdgeInsets.symmetric(horizontal: 4.0),
+                              padding: EdgeInsets.symmetric(horizontal: 4.0),
                               child: Icon(Icons.double_arrow,
                                   size: 14, color: Colors.black),
                             ),
@@ -913,13 +1105,17 @@ class FooterSection extends StatelessWidget {
                           const SizedBox(height: 10),
                           Row(
                             children: const [
-                              Icon(FontAwesomeIcons.facebook, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.facebook,
+                                  color: Colors.white, size: 18),
                               SizedBox(width: 10),
-                              Icon(FontAwesomeIcons.twitter, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.twitter,
+                                  color: Colors.white, size: 18),
                               SizedBox(width: 10),
-                              Icon(FontAwesomeIcons.youtube, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.youtube,
+                                  color: Colors.white, size: 18),
                               SizedBox(width: 10),
-                              Icon(FontAwesomeIcons.linkedin, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.linkedin,
+                                  color: Colors.white, size: 18),
                             ],
                           )
                         ],
@@ -929,7 +1125,13 @@ class FooterSection extends StatelessWidget {
                     // Quick Links
                     _buildFooterColumn(
                       'Quick Links',
-                      ['Digtek About', 'Our Services', 'Our Blogs', 'FAQ\'s', 'Contact Us'],
+                      [
+                        'Digtek About',
+                        'Our Services',
+                        'Our Blogs',
+                        'FAQ\'s',
+                        'Contact Us'
+                      ],
                     ),
 
                     // Recent Posts with images
@@ -940,7 +1142,9 @@ class FooterSection extends StatelessWidget {
                         children: [
                           const Text(
                             'Recent Posts',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 10),
                           _buildPostItem(
@@ -965,11 +1169,15 @@ class FooterSection extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text('Contact Us',
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
                           const SizedBox(height: 10),
-                          const Text('info@example.com', style: TextStyle(color: Colors.white70)),
+                          const Text('info@example.com',
+                              style: TextStyle(color: Colors.white70)),
                           const SizedBox(height: 5),
-                          const Text('+208-666-0112', style: TextStyle(color: Colors.white70)),
+                          const Text('+208-666-0112',
+                              style: TextStyle(color: Colors.white70)),
                           const SizedBox(height: 10),
                           Row(
                             children: [
@@ -978,7 +1186,8 @@ class FooterSection extends StatelessWidget {
                                   style: const TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
                                     hintText: 'Your Email Address',
-                                    hintStyle: const TextStyle(color: Colors.white54),
+                                    hintStyle:
+                                        const TextStyle(color: Colors.white54),
                                     filled: true,
                                     fillColor: const Color(0xFF1A1955),
                                     border: OutlineInputBorder(
@@ -995,14 +1204,16 @@ class FooterSection extends StatelessWidget {
                                   color: const Color(0xFF6C4EFF),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: const Icon(Icons.arrow_forward, color: Colors.white),
+                                child: const Icon(Icons.arrow_forward,
+                                    color: Colors.white),
                               ),
                             ],
                           ),
                           const SizedBox(height: 10),
                           const Text(
                             'I agree to the Privacy Policy',
-                            style: TextStyle(color: Colors.white54, fontSize: 12),
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12),
                           ),
                         ],
                       ),
@@ -1086,7 +1297,9 @@ class FooterSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          Text(title,
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
           for (var item in items)
             Padding(
@@ -1103,18 +1316,21 @@ class FooterSection extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
+          child:
+              Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(date, style: const TextStyle(color: Colors.white54, fontSize: 12)),
+              Text(date,
+                  style: const TextStyle(color: Colors.white54, fontSize: 12)),
               const SizedBox(height: 2),
               Text(
                 title,
-                style: const TextStyle(color: Colors.white, fontSize: 13, height: 1.3),
+                style: const TextStyle(
+                    color: Colors.white, fontSize: 13, height: 1.3),
               ),
             ],
           ),
@@ -1123,6 +1339,7 @@ class FooterSection extends StatelessWidget {
     );
   }
 }
+
 class AwesomeSection extends StatelessWidget {
   const AwesomeSection({super.key});
 
@@ -1213,7 +1430,7 @@ class AwesomeSection extends StatelessWidget {
                 children: [
                   Container(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
                       color: Colors.deepPurple.shade100,
                       borderRadius: BorderRadius.circular(30),
@@ -1238,8 +1455,8 @@ class AwesomeSection extends StatelessWidget {
                   const SizedBox(height: 16),
                   const Text(
                     "Every pleasure is to be welcomed and every pain avoided. "
-                        "Certain circumstances and owing to the claims welcomed "
-                        "and every pain avoided certain circumstances",
+                    "Certain circumstances and owing to the claims welcomed "
+                    "and every pain avoided certain circumstances",
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   const SizedBox(height: 24),
@@ -1348,8 +1565,8 @@ class TestimonialSectionServices extends StatelessWidget {
               children: [
                 // Small label
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 6),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                   decoration: BoxDecoration(
                     color: const Color(0xFFEFF2FF),
                     borderRadius: BorderRadius.circular(20),
@@ -1401,7 +1618,7 @@ class TestimonialSectionServices extends StatelessWidget {
                           const CircleAvatar(
                             radius: 24,
                             backgroundImage:
-                            AssetImage("assets/images/avatar4.png"),
+                                AssetImage("assets/images/avatar4.png"),
                           ),
                           const SizedBox(width: 12),
                           Column(
@@ -1436,8 +1653,8 @@ class TestimonialSectionServices extends StatelessWidget {
 
                       const Text(
                         "There are many variations of passages of Lorem Ipsum available, "
-                            "but the majority have suffered alteration in some form, by injected "
-                            "humour, or randomised words which don't look even slightly believable.",
+                        "but the majority have suffered alteration in some form, by injected "
+                        "humour, or randomised words which don't look even slightly believable.",
                         style: TextStyle(
                           fontSize: 14,
                           height: 1.5,
@@ -1455,5 +1672,3 @@ class TestimonialSectionServices extends StatelessWidget {
     );
   }
 }
-
-
