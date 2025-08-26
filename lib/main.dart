@@ -1,22 +1,15 @@
 import 'package:erudite/views/about_us/about_us.dart';
-import 'package:erudite/views/about_us/about_us_code_tea.dart';
+import 'package:erudite/views/blog/blog_grid.dart';
+import 'package:erudite/views/case_studies/case_studies.dart';
+import 'package:erudite/views/case_studies_details/case_studies_details.dart';
 import 'package:erudite/views/contact_us/contact_us.dart';
 import 'package:erudite/views/home/home_screen.dart';
-import 'package:erudite/views/home_screen.dart';
 import 'package:erudite/views/landing_page.dart';
-import 'package:erudite/views/portfolio/portfolio_screen.dart';
-import 'package:erudite/views/services/services_old.dart';
 import 'package:erudite/views/services/services_screen.dart';
 import 'package:erudite/views/services_details/services_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'ai-based/home/home2.dart';
-import 'ai-based/home/home3.dart';
-import 'ai-based/home/home_page.dart';
-import 'ai-based/home/our_services_section3.dart';
-import 'experiment/file1.dart';
 import 'dart:ui_web' as ui; // <-- NEW import
 import 'dart:html' show IFrameElement; // explicitly import only IFrameElement
 
@@ -43,20 +36,23 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final getPages = [
-    GetPage(name: '/', page: () => const LandingPage()),
+    // GetPage(name: '/', page: () => const LandingPage()),
     GetPage(name: '/about', page: () => AboutUsPage()),
     GetPage(name: '/home', page: () => HomeScreen()),
     GetPage(name: '/contact-us', page: () => ContactUs()),
     GetPage(name: '/services', page: () => ServicesScreen()),
-    GetPage(name: '/services-details', page: () => ServicesDetailsScreen())
+    GetPage(name: '/services-details', page: () => ServicesDetailsScreen()),
+    GetPage(name: '/case-studies', page: () => CaseStudiesScreen()),
+    GetPage(name: '/case-studies-details', page: () => CaseStudiesDetailsScreen()),
+    GetPage(name: '/blog-grid', page: () => BlogGridScreen())
   ];
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Digtek',
+      title: 'Erudite',
       debugShowCheckedModeBanner: false,
-      initialRoute: "/",
+      initialRoute: "/about",
       getPages: getPages,
       theme: ThemeData(
         primaryColor: const Color(0xFF6B48ED), // Bright purple

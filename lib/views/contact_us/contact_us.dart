@@ -14,14 +14,17 @@ class ContactUs extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
-        child: Column(
+        child: Container(
+          color: const Color(0xFFFFFFFF),
+          padding: const EdgeInsets.all(16), // optional
+          child: Column(
           children: const [
             AboutUsBanner(),
             ContactInfoSection(),
             ContactPage(),
             FooterSection(),
           ],
-        ),
+        ),),
       ),
     );
   }

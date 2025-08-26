@@ -38,21 +38,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           const SizedBox(width: 32),
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                _buildMenuItem('Home'),
-                _buildMenuItem('Pages'),
-                _buildMenuItem('Services', isLast: false, onTap: () => Get.toNamed('/services')),
-                _buildMenuItem('Services Details', isLast: false, onTap: () => Get.toNamed('/services-details')),
-                _buildMenuItem('Projects'),
-                _buildMenuItem('Blog'),
-                _buildMenuItem('Contact Us', isLast: false, onTap: () => Get.toNamed('/contact-us')),
-                _buildMenuItem('About Us', isLast: true, onTap: () => Get.toNamed('/about')),
-              ],
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _buildMenuItem('Home', isLast: false, onTap: () => Get.toNamed('/')),
+                  _buildMenuItem('About Us', isLast: false, onTap: () => Get.toNamed('/about')),
+                  _buildMenuItem('Services', isLast: false, onTap: () => Get.toNamed('/services')),
+                  _buildMenuItem('Services Details', isLast: false, onTap: () => Get.toNamed('/services-details')),
+                  _buildMenuItem('Case Studies', onTap: () => Get.toNamed('/case-studies')),
+                  _buildMenuItem('Case Studies Details', onTap: () => Get.toNamed('/case-studies-details')),
+                  _buildMenuItem('Blog Grid', onTap: () => Get.toNamed('/blog-grid')),
+                  // _buildMenuItem('Blog Details'),
+                  _buildMenuItem('Contact Us', isLast: true, onTap: () => Get.toNamed('/contact-us')),
+                ],
+              ),
             ),
           ),
-          const Icon(Icons.search, color: Colors.white),
+          // const Icon(Icons.search, color: Colors.white),
           const SizedBox(width: 16),
           Container(
             decoration: BoxDecoration(

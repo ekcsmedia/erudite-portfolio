@@ -12,7 +12,10 @@ class AboutUsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
-        child: Column(
+        child: Container(
+          color: const Color(0xFFFFFFFF),
+          padding: const EdgeInsets.all(16), // optional
+          child: Column(
           children: const [
             AboutUsBanner(),
             AboutCompanySection(),
@@ -23,6 +26,7 @@ class AboutUsPage extends StatelessWidget {
             FooterSection(),
           ],
         ),
+      ),
       ),
     );
   }
@@ -294,7 +298,7 @@ class AboutCompanySection extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.purple,
+                      backgroundColor: Color(0xFF6B48ED),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
@@ -340,7 +344,7 @@ class AboutCompanySection extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Icon(icon, size: 36, color: Colors.purple),
+          Icon(icon, size: 36, color: Color(0xFF6B48ED)),
           const SizedBox(height: 10),
           Text(
             title,
@@ -444,7 +448,7 @@ class CounterSection extends StatelessWidget {
                     ),
                     child: const Icon(
                       Icons.play_arrow,
-                      color: Colors.purple,
+                      color: Color(0xFF6B48ED),
                       size: 36,
                     ),
                   ),
