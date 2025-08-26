@@ -810,7 +810,7 @@ class AboutUsBanner extends StatelessWidget {
                 children: [
                   // Title
                   Text(
-                    'Our Services',
+                    'Our Expertise',
                     style: GoogleFonts.poppins(
                       fontSize: 28,
                       fontWeight: FontWeight.w700,
@@ -851,7 +851,7 @@ class AboutUsBanner extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: 'Our Services',
+                            text: 'Our Expertise',
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w600,
                               color: Colors.black,

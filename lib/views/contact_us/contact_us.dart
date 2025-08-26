@@ -184,7 +184,7 @@ class FooterSection extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SvgPicture.asset(
-                            'assets/images/white-logo.svg',
+                            'assets/images/logo.png',
                             width: 40,
                             height: 30,
                           ),
@@ -332,7 +332,7 @@ class FooterSection extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     const Text(
-                      'Stay Connected With\nCutting Edge IT',
+                      'Visuals That Speak',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

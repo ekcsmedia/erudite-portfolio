@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:erudite/views/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,42 +14,46 @@ class AboutUsPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
-        child: Container(
-          color: const Color(0xFFFFFFFF),
-          padding: const EdgeInsets.all(16), // optional
-          child: Column(
-          children: const [
-            AboutUsBanner(),
-            AboutCompanySection(),
-            CounterSection(),
-            ValuesSection(),
-            ExpertTeamSection(),
-            TestimonialSection(),
+        child: Column(
+          children: [
+            Container(
+              color: const Color(0xFFFFFFFF),
+              padding: const EdgeInsets.all(16), // optional
+              child: Column(
+                children: const [
+                  AboutUsBanner(),
+                  AboutCompanySection(),
+                  CounterSection(),
+                  ValuesSection(),
+                  ExpertTeamSection(),
+                  TestimonialSection(),
+                ],
+              ),
+            ),
             FooterSection(),
           ],
         ),
-      ),
       ),
     );
   }
 }
 
 TextStyle headingStyle() => GoogleFonts.poppins(
-  fontSize: 28,
-  fontWeight: FontWeight.bold,
-  color: Colors.black87,
-);
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      color: Colors.black87,
+    );
 
 TextStyle subHeadingStyle() => GoogleFonts.poppins(
-  fontSize: 18,
-  fontWeight: FontWeight.w500,
-  color: Colors.black54,
-);
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: Colors.black54,
+    );
 
 TextStyle normalText() => GoogleFonts.poppins(
-  fontSize: 14,
-  color: Colors.black54,
-);
+      fontSize: 14,
+      color: Colors.black54,
+    );
 
 // ================= HERO ==================
 
@@ -107,7 +113,7 @@ class AboutUsBanner extends StatelessWidget {
                   // Breadcrumb
                   Container(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.purple, width: 1.5),
                       borderRadius: BorderRadius.circular(50),
@@ -127,10 +133,10 @@ class AboutUsBanner extends StatelessWidget {
                             ),
                           ),
                           const WidgetSpan(
-                            alignment: PlaceholderAlignment.middle, // ✅ align with text
+                            alignment: PlaceholderAlignment
+                                .middle, // ✅ align with text
                             child: Padding(
-                              padding:
-                              EdgeInsets.symmetric(horizontal: 4.0),
+                              padding: EdgeInsets.symmetric(horizontal: 4.0),
                               child: Icon(Icons.double_arrow,
                                   size: 14, color: Colors.black),
                             ),
@@ -156,7 +162,6 @@ class AboutUsBanner extends StatelessWidget {
   }
 }
 
-
 // ================= ABOUT COMPANY ==================
 
 class AboutCompanySection extends StatelessWidget {
@@ -165,182 +170,189 @@ class AboutCompanySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-    decoration: const BoxDecoration(
-      gradient: LinearGradient(
-        colors: [Color(0xFFF9F7FD), Colors.white],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
+      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Color(0xFFF9F7FD), Colors.white],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
       ),
-    ),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // LEFT IMAGE COLUMN
-        Expanded(
-          flex: 5,
-          child: Stack(
-            clipBehavior: Clip.none, // allow overflow for overlap
-            alignment: Alignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  "assets/images/aboutcompimage.jpg", // main image asset
-                  fit: BoxFit.cover,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // LEFT IMAGE COLUMN
+          Expanded(
+            flex: 5,
+            child: Stack(
+              clipBehavior: Clip.none, // allow overflow for overlap
+              alignment: Alignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    "assets/images/aboutcompimage.jpg", // main image asset
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
 
-              // 5 Stars Tag
-              Positioned(
-                top: 40,
-                left: 0,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                // 5 Stars Tag
+                Positioned(
+                  top: 40,
+                  left: 0,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.orange.shade400,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.star, color: Colors.white, size: 16),
+                        const SizedBox(width: 6),
+                        Text(
+                          "5 Stars",
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                // Sales Trend Card
+                Positioned(
+                  bottom: 30, // similar height as screenshot
+                  right: -100, // slightly overflowing image
+                  child: SizedBox(
+                    width: 240,
+                    height: 240,
+                    child: Image.asset(
+                      'assets/images/sales_trend.png', // sales trend asset
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(width: 40),
+
+          // RIGHT TEXT COLUMN
+          Expanded(
+            flex: 6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Tag
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.orange.shade400,
+                    color: Colors.blue.shade50,
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.star, color: Colors.white, size: 16),
-                      const SizedBox(width: 6),
-                      Text(
-                        "5 Stars",
-                        style: GoogleFonts.poppins(
-                          fontSize: 12,
-                          color: Colors.white,
+                  child: Text(
+                    "ABOUT COMPANY",
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                // Title
+                Text(
+                  "Erudite – Bringing Ideas to Life",
+                  style: GoogleFonts.poppins(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w700,
+                    color: const Color(0xFF1C0A37),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                // Description
+                Text(
+                  "At Erudite, we transform ideas into impactful visuals through motion graphics, 2D/3D animations, whiteboard, line drawing, infographic, and iconic styles. Our expertise includes background design, illustration, asset and character creation, advertising design, storyboards, and typography. From eLearning solutions to advertising videos, explainers, mascots, and digital posters, we craft engaging content that inspires, informs, and drives results",
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.black54,
+                    height: 1.6,
+                  ),
+                ),
+                const SizedBox(height: 30),
+
+                // Two feature cards
+                Row(
+                  children: [
+                    _buildFeatureCard(
+                        Icons.analytics_outlined,
+                        "Animated Storytelling",
+                        "Professional animations and motion graphics that communicate with clarity and captivate your audience"),
+                    const SizedBox(width: 20),
+                    _buildFeatureCard(Icons.security_outlined, "Visual Design",
+                        "Backgrounds, typography, and storyboards crafted to bring concepts to life with precision and style"),
+                  ],
+                ),
+                const SizedBox(height: 30),
+
+                // Buttons
+                Row(
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF6B48ED),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 14,
                         ),
                       ),
-                    ],
-                  ),
+                      onPressed: () {},
+                      child: Text(
+                        "ABOUT US MORE",
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    TextButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.arrow_forward,
+                          size: 16, color: Colors.black),
+                      label: Text(
+                        "EXPLORE MORE",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-
-              // Sales Trend Card
-              Positioned(
-                bottom: 30, // similar height as screenshot
-                right: -100, // slightly overflowing image
-                child: SizedBox(
-                  width: 240,
-                  height: 240,
-                  child: Image.asset(
-                    'assets/images/sales_trend.png', // sales trend asset
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-
-        const SizedBox(width: 40),
-
-        // RIGHT TEXT COLUMN
-        Expanded(
-          flex: 6,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Tag
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Text(
-                  "ABOUT COMPANY",
-                  style: GoogleFonts.poppins(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.blue,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // Title
-              Text(
-                "Let’s Make Something Awesome Together",
-                style: GoogleFonts.poppins(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w700,
-                  color: const Color(0xFF1C0A37),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // Description
-              Text(
-                "We’re not just another agency – we’re your digital growth partners. With years of industry experience and a passion for innovation, our team is dedicated to delivering measurable results propel your business forward.",
-                style: GoogleFonts.poppins(
-                  fontSize: 14,
-                  color: Colors.black54,
-                  height: 1.6,
-                ),
-              ),
-              const SizedBox(height: 30),
-
-              // Two feature cards
-              Row(
-                children: [
-                  _buildFeatureCard(Icons.analytics_outlined, "Analytics Reporting"),
-                  const SizedBox(width: 20),
-                  _buildFeatureCard(Icons.security_outlined, "Data Guard Sentinel"),
-                ],
-              ),
-              const SizedBox(height: 30),
-
-              // Buttons
-              Row(
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6B48ED),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 14,
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "ABOUT US MORE",
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  TextButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.arrow_forward, size: 16, color: Colors.black),
-                    label: Text(
-                      "EXPLORE MORE",
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
+        ],
+      ),
     );
   }
 
-  Widget _buildFeatureCard(IconData icon, String title) {
+  Widget _buildFeatureCard(IconData icon, String title, String content) {
     return Expanded(
       child: Column(
         children: [
@@ -356,7 +368,7 @@ class AboutCompanySection extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            "Collaboratively formulate principle capital. Progressively evolve user",
+            content,
             style: GoogleFonts.poppins(
               fontSize: 12,
               color: Colors.black54,
@@ -404,7 +416,7 @@ class CounterSection extends StatelessWidget {
 
             // Title
             Text(
-              "Make Your Marketing\nMore Effective",
+              "Trusted by Clients, Driven by Excellence",
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                 fontSize: 28,
@@ -514,25 +526,25 @@ class ValuesSection extends StatelessWidget {
         'icon': Icons.verified_user,
         'title': 'Integrity',
         'description':
-        'Collaboratively formulate principle capital. Progressively evolve user revolutionary hosting services.'
+            'We uphold honesty, transparency, and strong ethical standards in every project we take on.'
       },
       {
         'icon': Icons.bar_chart,
-        'title': 'Simplicity',
+        'title': 'Quality',
         'description':
-        'Collaboratively formulate principle capital. Progressively evolve user revolutionary hosting services.'
+            'Delivering excellence with precision, care, and attention to detail in all our solutions.'
       },
       {
         'icon': Icons.speed,
-        'title': 'Performance',
+        'title': 'Creativity',
         'description':
-        'Collaboratively formulate principle capital. Progressively evolve user revolutionary hosting services.'
+            'Transforming ideas into original, engaging, and visually compelling experiences.'
       },
       {
         'icon': Icons.verified_user,
-        'title': 'Integrity',
+        'title': 'Reliability',
         'description':
-        'Collaboratively formulate principle capital. Progressively evolve user revolutionary hosting services.'
+            'Consistently dependable, ensuring trust, timely delivery, and long-term partnerships'
       },
     ];
 
@@ -555,8 +567,8 @@ class ValuesSection extends StatelessWidget {
               final crossAxisCount = constraints.maxWidth > 900
                   ? 4
                   : constraints.maxWidth > 600
-                  ? 2
-                  : 1;
+                      ? 2
+                      : 1;
               return GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -638,7 +650,6 @@ class _ValueCard extends StatelessWidget {
   }
 }
 
-
 // ================= TEAM ==================
 
 class ExpertTeamSection extends StatelessWidget {
@@ -674,8 +685,8 @@ class ExpertTeamSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 6),
                       decoration: BoxDecoration(
                         color: const Color(0xFFEFF0FF),
                         borderRadius: BorderRadius.circular(20),
@@ -702,11 +713,11 @@ class ExpertTeamSection extends StatelessWidget {
                     const SizedBox(height: 30),
                     Row(
                       children: [
-                        _circleButton(Icons.arrow_back, Colors.white,
-                            Colors.black87),
-                        const SizedBox(width: 10),
                         _circleButton(
-                            Icons.arrow_forward, const Color(0xFF4A3AFF), Colors.white),
+                            Icons.arrow_back, Colors.white, Colors.black87),
+                        const SizedBox(width: 10),
+                        _circleButton(Icons.arrow_forward,
+                            const Color(0xFF4A3AFF), Colors.white),
                       ],
                     ),
                   ],
@@ -785,8 +796,7 @@ class _TeamCard extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius:
-            const BorderRadius.vertical(top: Radius.circular(16)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
             child: Image.asset(
               imagePath,
               width: double.infinity,
@@ -798,8 +808,7 @@ class _TeamCard extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: const BoxDecoration(
               color: Colors.white,
-              borderRadius:
-              BorderRadius.vertical(bottom: Radius.circular(16)),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
             ),
             child: Row(
               children: [
@@ -843,175 +852,231 @@ class _TeamCard extends StatelessWidget {
   }
 }
 
-
 // ================= TESTIMONIALS ==================
 
-
-class TestimonialSection extends StatelessWidget {
+class TestimonialSection extends StatefulWidget {
   const TestimonialSection({super.key});
 
   @override
+  State<TestimonialSection> createState() => _TestimonialSectionState();
+}
+
+class _TestimonialSectionState extends State<TestimonialSection> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+  Timer? _timer;
+
+  final List<Map<String, String>> testimonials = [
+    {
+      "message": "Working with Erudite was smooth from start to finish.\n"
+          "Their designs helped us connect better with our audience\n"
+          "and added real value to our brand.",
+      "name": "Esther Howard",
+      "role": "Trader, USA",
+      "image": "assets/images/customer.png",
+    },
+    {
+      "message": "Erudite made our ideas come alive with visuals\n"
+          "that were clear and engaging.\n"
+          "The team was professional, quick to respond, and easy to work with.",
+      "name": "Maria Lopez",
+      "role": "Marketing Manager, Spain",
+      "image": "assets/images/avatar1.png",
+    },
+    {
+      "message": "We wanted creative solutions for our training programs,\n"
+          "and Erudite delivered beyond expectations.\n"
+          "The quality and attention to detail really stood out.",
+      "name": "David Chen",
+      "role": "Learning Consultant, Singapore",
+      "image": "assets/images/avatar2.png",
+    },
+  ];
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Auto-slide every 4 seconds
+    _timer = Timer.periodic(const Duration(seconds: 4), (timer) {
+      if (_pageController.hasClients) {
+        _currentPage++;
+        if (_currentPage >= testimonials.length) {
+          _currentPage = 0;
+        }
+        _pageController.animateToPage(
+          _currentPage,
+          duration: const Duration(milliseconds: 600),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        // Left decoration
-        Positioned(
-          left: 0,
-          bottom: 50,
-          child: Image.asset(
-            "assets/images/left-shape.png",
-            height: 120,
+        const SizedBox(height: 40),
+        // Label
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFF6A5AE0), Color(0xFF61C3FF)],
+            ),
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: Text(
+            "TESTIMONIALS",
+            style: GoogleFonts.poppins(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 12,
+            ),
           ),
         ),
-        // Right decoration
-        Positioned(
-          right: 20,
-          top: 100,
-          child: Image.asset(
-            "assets/images/right-shape.png",
-            height: 60,
-          ),
-        ),
+        const SizedBox(height: 14),
 
-        // Main content
-        Column(
+        // Title
+        Text(
+          "What Our Happy Customers\nAre Saying",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.poppins(
+            fontSize: 26,
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF1D1037),
+          ),
+        ),
+        const SizedBox(height: 30),
+
+        // SLIDABLE TESTIMONIALS
+        Stack(
+          clipBehavior: Clip.none,
           children: [
-            const SizedBox(height: 40),
-            // Label
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 100),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Color(0xFF6A5AE0), Color(0xFF61C3FF)],
-                ),
-                borderRadius: BorderRadius.circular(50),
-              ),
-              child: Text(
-                "TESTIMONIALS",
-                style: GoogleFonts.poppins(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-            const SizedBox(height: 14),
-            // Title
-            Text(
-              "What Our Happy Customers\nAre Saying",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.poppins(
-                fontSize: 26,
-                fontWeight: FontWeight.w700,
-                color: const Color(0xFF1D1037),
-              ),
-            ),
-            const SizedBox(height: 30),
-
-            // Testimonial Card
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-                  margin: const EdgeInsets.symmetric(horizontal: 300),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 15,
-                        offset: Offset(0, 5),
-                      ),
-                    ],
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 15,
+                    offset: Offset(0, 5),
                   ),
-                  child: Stack(
-                    clipBehavior: Clip.none, // allow avatars to go outside bounds
-                    children: [
-                      // Main content in the center
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset("assets/images/quote.png", height: 40),
-                          const SizedBox(height: 16),
-                          Text(
-                            "Lorem ipsum dolor sit amet consectetur adipiscing elit. "
-                                "Mauris nullam the as integer quam dolor nunc semper.",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.poppins(fontSize: 14, height: 1.6),
-                          ),
-                          const SizedBox(height: 20),
-                          CircleAvatar(
-                            radius: 24,
-                            backgroundImage: AssetImage("assets/images/customer.png"),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            "Esther Howard",
-                            style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
+                ],
+              ),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: -20,
+                    right: 60,
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundImage: AssetImage("assets/images/avatar2.png"),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: -20,
+                    left: 40,
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundImage: AssetImage("assets/images/avatar3.png"),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: -20,
+                    right: 30,
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundImage: AssetImage("assets/images/avatar4.png"),
+                    ),
+                  ),
+                  Positioned(
+                    top: -20,
+                    left: 70,
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundImage: AssetImage("assets/images/avatar1.png"),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 330,
+                    width: double.infinity,
+                    child: PageView.builder(
+                      controller: _pageController,
+                      itemCount: testimonials.length,
+                      itemBuilder: (context, index) {
+                        final t = testimonials[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                            decoration: BoxDecoration(
+                              color: Colors.transparent, // ✅ no background
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset("assets/images/quote.png", height: 40),
+                                const SizedBox(height: 16),
+                                Text(
+                                  t["message"]!,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 3, // ✅ restrict to 3 lines
+                                  overflow: TextOverflow.ellipsis, // ✅ trim if too long
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 14,
+                                    height: 1.6,
+                                    fontStyle: FontStyle.italic, // ✅ italic font
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                CircleAvatar(
+                                  radius: 24,
+                                  backgroundImage: AssetImage(t["image"]!),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  t["name"]!,
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                Text(
+                                  t["role"]!,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Text(
-                            "Trader, USA",
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              color: Colors.black54,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      // Top-left avatar
-                      Positioned(
-                        top: -20,
-                        left: 70,
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundImage: AssetImage("assets/images/avatar1.png"),
-                        ),
-                      ),
-
-                      // Top-right avatar
-                      Positioned(
-                        top: -20,
-                        right: 60,
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundImage: AssetImage("assets/images/avatar2.png"),
-                        ),
-                      ),
-
-                      // Bottom-left avatar
-                      Positioned(
-                        bottom: -20,
-                        left: 40,
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundImage: AssetImage("assets/images/avatar3.png"),
-                        ),
-                      ),
-
-                      // Bottom-right avatar
-                      Positioned(
-                        bottom: -20,
-                        right: 30,
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundImage: AssetImage("assets/images/avatar4.png"),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
-            const SizedBox(height: 60),
           ],
         ),
+        const SizedBox(height: 60),
       ],
     );
   }
@@ -1059,13 +1124,17 @@ class FooterSection extends StatelessWidget {
                           const SizedBox(height: 10),
                           Row(
                             children: const [
-                              Icon(FontAwesomeIcons.facebook, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.facebook,
+                                  color: Colors.white, size: 18),
                               SizedBox(width: 10),
-                              Icon(FontAwesomeIcons.twitter, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.twitter,
+                                  color: Colors.white, size: 18),
                               SizedBox(width: 10),
-                              Icon(FontAwesomeIcons.youtube, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.youtube,
+                                  color: Colors.white, size: 18),
                               SizedBox(width: 10),
-                              Icon(FontAwesomeIcons.linkedin, color: Colors.white, size: 18),
+                              Icon(FontAwesomeIcons.linkedin,
+                                  color: Colors.white, size: 18),
                             ],
                           )
                         ],
@@ -1075,7 +1144,13 @@ class FooterSection extends StatelessWidget {
                     // Quick Links
                     _buildFooterColumn(
                       'Quick Links',
-                      ['Digtek About', 'Our Services', 'Our Blogs', 'FAQ\'s', 'Contact Us'],
+                      [
+                        'Digtek About',
+                        'Our Services',
+                        'Our Blogs',
+                        'FAQ\'s',
+                        'Contact Us'
+                      ],
                     ),
 
                     // Recent Posts with images
@@ -1086,7 +1161,9 @@ class FooterSection extends StatelessWidget {
                         children: [
                           const Text(
                             'Recent Posts',
-                            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 10),
                           _buildPostItem(
@@ -1111,11 +1188,15 @@ class FooterSection extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text('Contact Us',
-                              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
                           const SizedBox(height: 10),
-                          const Text('info@example.com', style: TextStyle(color: Colors.white70)),
+                          const Text('info@example.com',
+                              style: TextStyle(color: Colors.white70)),
                           const SizedBox(height: 5),
-                          const Text('+208-666-0112', style: TextStyle(color: Colors.white70)),
+                          const Text('+208-666-0112',
+                              style: TextStyle(color: Colors.white70)),
                           const SizedBox(height: 10),
                           Row(
                             children: [
@@ -1124,7 +1205,8 @@ class FooterSection extends StatelessWidget {
                                   style: const TextStyle(color: Colors.white),
                                   decoration: InputDecoration(
                                     hintText: 'Your Email Address',
-                                    hintStyle: const TextStyle(color: Colors.white54),
+                                    hintStyle:
+                                        const TextStyle(color: Colors.white54),
                                     filled: true,
                                     fillColor: const Color(0xFF1A1955),
                                     border: OutlineInputBorder(
@@ -1141,14 +1223,16 @@ class FooterSection extends StatelessWidget {
                                   color: const Color(0xFF6C4EFF),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: const Icon(Icons.arrow_forward, color: Colors.white),
+                                child: const Icon(Icons.arrow_forward,
+                                    color: Colors.white),
                               ),
                             ],
                           ),
                           const SizedBox(height: 10),
                           const Text(
                             'I agree to the Privacy Policy',
-                            style: TextStyle(color: Colors.white54, fontSize: 12),
+                            style:
+                                TextStyle(color: Colors.white54, fontSize: 12),
                           ),
                         ],
                       ),
@@ -1195,7 +1279,7 @@ class FooterSection extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     const Text(
-                      'Stay Connected With\nCutting Edge IT',
+                      'Visuals That Speak',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -1232,7 +1316,9 @@ class FooterSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          Text(title,
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
           for (var item in items)
             Padding(
@@ -1249,18 +1335,21 @@ class FooterSection extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
+          child:
+              Image.asset(imagePath, width: 50, height: 50, fit: BoxFit.cover),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(date, style: const TextStyle(color: Colors.white54, fontSize: 12)),
+              Text(date,
+                  style: const TextStyle(color: Colors.white54, fontSize: 12)),
               const SizedBox(height: 2),
               Text(
                 title,
-                style: const TextStyle(color: Colors.white, fontSize: 13, height: 1.3),
+                style: const TextStyle(
+                    color: Colors.white, fontSize: 13, height: 1.3),
               ),
             ],
           ),
