@@ -3,7 +3,12 @@
   "builds": [
     {
       "src": "pubspec.yaml",
-      "use": "@vercel/flutter"
+      "use": "@vercel/flutter",
+      "config": {
+         "flutterVersion": "3.35.1"
+      }
     }
-  ]
+  ],
+  "buildCommand": "flutter build web --release",
+  "outputDirectory": "build/web"
 }
