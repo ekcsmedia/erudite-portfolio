@@ -7,23 +7,23 @@ class ServiceCardGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> services = [
       {
-        "title": "Digital Marketing",
-        "subtitle": "Marketing",
+        "title": "Simplifying Complex Concepts through Animation",
+        "subtitle": "",
         "image": "assets/images/digital_marketing.jpg", // replace with your asset
       },
       {
-        "title": "PPC Advertising",
-        "subtitle": "Seo Design",
+        "title": "Building Brand Identity with Motion Graphics",
+        "subtitle": "",
         "image": "assets/images/ppc_advertising.jpg", // replace with your asset
       },
       {
-        "title": "Social Media",
-        "subtitle": "Branding",
+        "title": "Elevating Presentations for Stakeholder Communication",
+        "subtitle": "",
         "image": "assets/images/social_media.jpg",
       },
       {
-        "title": "Content Strategy",
-        "subtitle": "Creative",
+        "title": "Corporate eLearning Solution for Healthcare Training",
+        "subtitle": "",
         "image": "assets/images/content_strategy.jpg",
       },
     ];
@@ -70,7 +70,7 @@ class ServiceCardGrid extends StatelessWidget {
                           service["title"]!,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: 22,
                             color: Colors.black87,
                           ),
                         ),

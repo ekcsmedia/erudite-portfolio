@@ -23,7 +23,7 @@ class ProjectDetailsWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "Building Digital Products End To End",
+                      "Simplifying Complex Concepts through Animation",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -55,17 +55,17 @@ class ProjectDetailsWidget extends StatelessWidget {
                     Text.rich(TextSpan(
                         text: "Client: ",
                         style: TextStyle(fontWeight: FontWeight.bold),
-                        children: [TextSpan(text: "David Martin")])),
+                        children: [TextSpan(text: "EdTech Startup Founder")])),
                     SizedBox(height: 8),
                     Text.rich(TextSpan(
                         text: "Year: ",
                         style: TextStyle(fontWeight: FontWeight.bold),
-                        children: [TextSpan(text: "2024")])),
+                        children: [TextSpan(text: "2023")])),
                     SizedBox(height: 8),
                     Text.rich(TextSpan(
                         text: "Author: ",
                         style: TextStyle(fontWeight: FontWeight.bold),
-                        children: [TextSpan(text: "Robart Mory")])),
+                        children: [TextSpan(text: "Erudite Team")])),
                   ],
                 ),
               ),
@@ -87,14 +87,14 @@ class ProjectDetailsWidget extends StatelessWidget {
             children: const [
               Expanded(
                 child: Text(
-                  "Nam posuere mauris enim, quis pretium elit placerat id Fusce egestas nisi vel ipsum vehicula facilisis In pulvinar imperdiet venenatis Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec eu pulvinar lorem. Etiam vestibulum ligula quis nisl feugiat, consectetur placerat augue vestibulum Nulla aliquam elit eu diam pharetra.",
+                  "An emerging EdTech startup faced challenges in explaining advanced technical concepts to students in an engaging and easy-to-grasp way. Their existing training content was text-heavy and failed to hold learners’ attention.",
                   style: TextStyle(fontSize: 14, color: Colors.black87),
                 ),
               ),
               SizedBox(width: 20),
               Expanded(
                 child: Text(
-                  "Fusce egestas nisi vel ipsum vehicula facilisis. In pulvinar imperdiet venenatis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec eu pulvinar lorem. Etiam vestibulum ligula quis nisl feugiat, consectetur placerat augue vestibulum.",
+                  "Erudite stepped in with a creative animation strategy. By combining motion graphics and whiteboard-style visuals, we transformed abstract subjects into simple, visually appealing stories that students could follow with ease.",
                   style: TextStyle(fontSize: 14, color: Colors.black87),
                 ),
               ),
@@ -105,7 +105,7 @@ class ProjectDetailsWidget extends StatelessWidget {
 
           /// Final Results
           const Text(
-            "Finial Results Of The Project",
+            "Final Results Of The Project",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
@@ -121,9 +121,12 @@ class ProjectDetailsWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          BulletText("Consectetuer Placerat Augue Vestibulum"),
-                          BulletText("Mauris Tincidunt A Eget Facilisis Quisque"),
-                          BulletText("Lorem Ipsum Dolor Sit Amet, Consectetur"),
+                          BulletText("Improved student engagement and course completion rates"),
+                          BulletText("Simplified communication of complex technical topics"),
+                          BulletText("Increased learner satisfaction across multiple batches"),
+                          BulletText("Positive feedback from both educators and learners"),
+                          BulletText("Enhanced brand reputation as an innovative learning platform"),
+                          BulletText("Long-term scalability of animated modules for future courses"),
                         ],
                       ),
                     ),
@@ -133,9 +136,7 @@ class ProjectDetailsWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          BulletText("Adipiscing Elit Etiam Aliquam, Enim Vitae"),
-                          BulletText("Donec At Augue Ante Nam Posuere Mauris"),
-                          BulletText("Quis Pretium Elit Placerat Id Fusce Egestas"),
+
                         ],
                       ),
                     ),

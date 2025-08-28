@@ -494,96 +494,6 @@ class ContactInfoCard extends StatelessWidget {
 }
 
 
-class ContactInfoSection1 extends StatelessWidget {
-  const ContactInfoSection1({super.key});
-
-  Widget _buildInfoCard(IconData icon, String title, String subtitle) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Icon container
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: const Color(0xFF6B48ED), // Figma primary color
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(icon, color: Colors.white, size: 28),
-          ),
-          const SizedBox(width: 16),
-
-          // Text
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xFF1A1A1A),
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.poppins(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey[700],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final isWide = MediaQuery.of(context).size.width > 800;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-      child: isWide
-          ? Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(child: _buildInfoCard(Icons.location_on, "Address", "123 Main Street, Chennai, TN")),
-          Expanded(child: _buildInfoCard(Icons.email, "Email", "contact@erudite.com")),
-          Expanded(child: _buildInfoCard(Icons.phone, "Phone", "+91 9876543210")),
-        ],
-      )
-          : Column(
-        children: [
-          _buildInfoCard(Icons.location_on, "Address", "123 Main Street, Chennai, TN"),
-          _buildInfoCard(Icons.email, "Email", "contact@erudite.com"),
-          _buildInfoCard(Icons.phone, "Phone", "+91 9876543210"),
-        ],
-      ),
-    );
-  }
-}
-
-
-
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
 
@@ -612,13 +522,12 @@ class ContactPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      color: Colors.deepPurple,
+                      color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    "Nullam varius, erat quis iaculis dictum, eros urna varius eros, "
-                        "ut blandit felis odio in turpis. Quisque rhoncus, eros in auctor ultrices.",
+                    "Get in touch with us today – share your details and message, and let’s start building something amazing together.",
                     style: TextStyle(fontSize: 14, color: Colors.black54),
                   ),
                   const SizedBox(height: 24),
@@ -669,7 +578,7 @@ class ContactPage extends StatelessWidget {
                     icon: const Icon(Icons.send),
                     label: const Text("Send Message"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: Color(0xFF6B48ED),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24, vertical: 16),
                       shape: RoundedRectangleBorder(

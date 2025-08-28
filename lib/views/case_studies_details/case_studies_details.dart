@@ -44,7 +44,7 @@ class CaseStudiesDetailsScreenState extends State<CaseStudiesDetailsScreen> {
                       label: const Text(
                         "Previous",
                         style: TextStyle(
-                          color: Color(0xFF4C1D95), // purple
+                          color: Color(0xFF6B48ED), // purple
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -56,11 +56,11 @@ class CaseStudiesDetailsScreenState extends State<CaseStudiesDetailsScreen> {
                       label: const Text(
                         "Next",
                         style: TextStyle(
-                          color: Color(0xFF4C1D95),
+                          color: Color(0xFF6B48ED),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      icon: const Icon(Icons.arrow_forward, color: Color(0xFF4C1D95)),
+                      icon: const Icon(Icons.arrow_forward, color: Color(0xFF6B48ED)),
                     ),
                   ],
                 ),
