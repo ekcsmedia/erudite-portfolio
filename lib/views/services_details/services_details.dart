@@ -203,78 +203,97 @@ class ServicesTiles extends StatelessWidget {
 // ✅ Your existing IntroSection, _ServicePoint, FaqAccordion, FaqItem, FaqTile, CtaBanner stay unchanged.
 
 
-class IntroSection extends StatelessWidget {
+class IntroSection extends StatefulWidget {
   const IntroSection({super.key});
 
   @override
+  State<IntroSection> createState() => _IntroSectionState();
+}
+
+class _IntroSectionState extends State<IntroSection> {
+
+  final List<String> services = [
+    "Animated Storytelling",
+    "Visual Design & Illustration",
+    "Advertising & Marketing Design",
+    "Storyboarding & Concept Development",
+    "eLearning Solutions",
+  ];
+
+  int selectedIndex = 0; // initially first one is selected
+  //  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Chip(
-          label: Text(
-            "FAQ'S",
+    return Container(
+      width: 320,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.deepPurple.shade50,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Heading
+          const Text(
+            "All Services",
             style: TextStyle(
-              color: Colors.deepPurple.shade600,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
-          backgroundColor: Colors.deepPurple.shade50,
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          "Let's Make Something Awesome Together",
-          style: GoogleFonts.inter(
-            fontSize: 42,
-            fontWeight: FontWeight.bold,
-            color: const Color(0xFF1E293B),
-            height: 1.2,
-          ),
-        ),
-        const SizedBox(height: 24),
-        Text(
-          "We're not just another agency - we're your digital growth partners. With years of industry experience and a passion for innovation, our team is dedicated to delivering measurable results propel your business forward.",
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.grey.shade600,
-            height: 1.6,
-          ),
-        ),
-        const SizedBox(height: 24),
-        const Divider(color: Color(0xFFE2E8F0)),
-        const SizedBox(height: 24),
-        const Row(
-          children: [
-            _ServicePoint(text: "Top quality service"),
-            SizedBox(width: 24),
-            _ServicePoint(text: "Intermodal Shipping"),
-          ],
-        ),
-      ],
-    );
-  }
-}
+          const SizedBox(height: 16),
 
-class _ServicePoint extends StatelessWidget {
-  final String text;
-  const _ServicePoint({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(Icons.check_circle, color: Colors.deepPurple.shade400, size: 20),
-        const SizedBox(width: 8),
-        Text(
-          text,
-          style: TextStyle(
-            color: Colors.grey.shade700,
-            fontWeight: FontWeight.w500,
+          // Service List
+          Column(
+            children: List.generate(services.length, (index) {
+              final isSelected = selectedIndex == index;
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    selectedIndex = index;
+                  });
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 14),
+                  decoration: BoxDecoration(
+                    color: isSelected
+                        ?  Color(0xFF6B48ED)
+                        : Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: Colors.grey.shade300,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        services[index],
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: isSelected
+                              ? Colors.white
+                              : Colors.black,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: isSelected
+                            ? Colors.white
+                            : Colors.black,
+                        size: 18,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -289,49 +308,117 @@ class FaqAccordion extends StatefulWidget {
 class _FaqAccordionState extends State<FaqAccordion> {
   final List<FaqItem> _faqItems = [
     FaqItem(
-      title: 'Why Is SEO Important For Small Business?',
+      title: 'What types of animated storytelling do you offer?',
       content:
-      'SEO is crucial for small businesses as it increases visibility, drives local traffic, builds credibility, and provides a high ROI compared to traditional marketing methods.',
+      'We create marketing campaign visuals, ad creatives, promotional animations, social media content, and other branded marketing materials tailored to your business needs.',
     ),
     FaqItem(
-      title: 'How Do I Choose The Best SEO Agency?',
+      title: 'How do you ensure the visuals align with our brand?',
       content:
-      'Nullam faucibus eleifend mi eu varius. Integer vel tincidunt massa, quis semper odio. Mauris et mollis quam. Nullam fringilla erat id ante commodo maximus.',
+      'We work closely with you to understand your brand identity, target audience, and campaign goals, ensuring every design reflects your brand’s personality and messaging.',
       isExpanded: true,
     ),
     FaqItem(
-      title: 'Better Security And Faster Server?',
+      title: 'Can you handle both digital and print advertising designs?',
       content:
-      'Yes, we provide top-tier security measures and high-speed servers to ensure your website is safe, reliable, and loads quickly for all users.',
+      'Yes! Our team is skilled in designing visuals for digital platforms, social media, websites, and print mediums such as brochures, posters, and banners.',
     ),
     FaqItem(
-      title: 'Deployment Within Few Minutes',
+      title: 'Can you create marketing visuals for a specific campaign or product launch?',
       content:
-      'Our streamlined deployment process allows us to get your project live in a matter of minutes, ensuring a quick and efficient launch.',
+      'Absolutely! We tailor each project to your campaign objectives, designing visuals and animations that highlight your product or service and engage your audience effectively.',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: _faqItems.map((item) {
-        return FaqTile(
-          item: item,
-          onTap: () {
-            setState(() {
-              for (var otherItem in _faqItems) {
-                if (otherItem != item) {
-                  otherItem.isExpanded = false;
-                }
-              }
-              item.isExpanded = !item.isExpanded;
-            });
-          },
-        );
-      }).toList(),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section 1
+          Text(
+            "Animated Storytelling",
+            style: Theme
+                .of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            "Animated Storytelling is the art of communicating ideas, messages, or narratives through motion graphics, 2D/3D animations, whiteboard and line drawing animations, infographics, and iconic visuals. It transforms complex concepts into engaging stories that capture attention and communicate effectively.",
+          ),
+          const SizedBox(height: 24),
+
+          // Section 2
+          Text(
+            "What We Provide",
+            style: Theme
+                .of(context)
+                .textTheme
+                .titleLarge
+                ?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            "We deliver end-to-end animation services, including concept creation, storyboarding, illustration, character design, and final animation production. Our team crafts marketing videos, eLearning modules, product demos, and brand storytelling animations that engage audiences, simplify ideas, and reflect your brand identity.",
+          ),
+          const SizedBox(height: 24),
+          Wrap(
+            spacing: 16,
+            runSpacing: 12,
+            children: const [
+              FeatureItem(text: "Motion Impact"),
+              FeatureItem(text: "Creative Narratives"),
+              FeatureItem(text: "Multi-Format Delivery"),
+              FeatureItem(text: "Brand Consistency"),
+            ],
+          ),
+          const SizedBox(height: 32),
+          Column(
+            children: _faqItems.map((item) {
+              return FaqTile(
+                item: item,
+                onTap: () {
+                  setState(() {
+                    item.isExpanded = !item.isExpanded;
+                  });
+                },
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 }
+// Feature Item
+class FeatureItem extends StatelessWidget {
+  final String text;
+  const FeatureItem({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(Icons.check_circle, color:  Color(0xFF6B48ED), size: 20),
+        const SizedBox(width: 6),
+        Text(
+          text,
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+        ),
+      ],
+    );
+  }
+}
+
 
 class FaqItem {
   final String title;
@@ -366,7 +453,7 @@ class FaqTile extends StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: item.isExpanded ? Colors.deepPurple.shade100 : Colors.grey.shade200,
+          color: Colors.grey.shade200,
         ),
       ),
       child: ClipRRect(
@@ -387,14 +474,14 @@ class FaqTile extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: item.isExpanded ? Colors.deepPurple.shade600 : const Color(0xFF1E293B),
+                            color: item.isExpanded ?  Color(0xFF6B48ED) : const Color(0xFF1E293B),
                           ),
                         ),
                       ),
                       const SizedBox(width: 16),
                       Icon(
                         item.isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_right,
-                        color: Colors.deepPurple.shade400,
+                        color:  Color(0xFF6B48ED),
                       ),
                     ],
                   ),
