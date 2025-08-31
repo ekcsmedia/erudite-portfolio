@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final getPages = [
-    // GetPage(name: '/', page: () => const LandingPage()),
+    GetPage(name: '/', page: () => const LandingPage()),
     GetPage(name: '/about', page: () => AboutUsPage()),
     GetPage(name: '/home', page: () => HomeScreen()),
     GetPage(name: '/contact-us', page: () => ContactUs()),
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Erudite',
       debugShowCheckedModeBanner: false,
-      initialRoute: "/about",
+      initialRoute: "/",
       getPages: getPages,
       theme: ThemeData(
         primaryColor: const Color(0xFF6B48ED), // Bright purple

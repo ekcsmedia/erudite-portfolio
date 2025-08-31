@@ -23,7 +23,8 @@ class FreeMarketingCard extends StatelessWidget {
               children: [
                 // Tag
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(16),
@@ -48,37 +49,6 @@ class FreeMarketingCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 // Email input row
-                SizedBox(
-                  width: 300,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: 'Your Email Address',
-                            hintStyle: GoogleFonts.poppins(fontSize: 12),
-                            filled: true,
-                            fillColor: Colors.white,
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(24),
-                              borderSide: BorderSide.none,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF5E3EE8),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(Icons.arrow_forward, color: Colors.white, size: 16),
-                      ),
-                    ],
-                  ),
-                ),
                 const SizedBox(height: 16),
                 // Feature items
                 Row(
@@ -95,17 +65,38 @@ class FreeMarketingCard extends StatelessWidget {
           // Right image
           Expanded(
             flex: 2,
-            child: true ? Container(
-              height: 140,
-              color: Colors.white24,
-              alignment: Alignment.center,
-              child: Text(
-                'Image Here',
-                style: GoogleFonts.poppins(color: Colors.white),
+            child: SizedBox(
+              width: 300,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Your Email Address',
+                        hintStyle: GoogleFonts.poppins(fontSize: 12),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 10),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(24),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF5E3EE8),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.arrow_forward,
+                        color: Colors.white, size: 16),
+                  ),
+                ],
               ),
-            ) : Image.asset(
-              'assets/images/marketing_person.png', // replace with your asset
-              height: 140,
             ),
           ),
         ],

@@ -12,18 +12,24 @@ class _FaqSectionState extends State<FaqSection> {
 
   final List<Map<String, String>> faqs = [
     {
-      'question': 'Why Is SEO Important For Small Business?',
-    },
-    {
-      'question': 'How Do I Choose The Best SEO Agency?',
+      'question': 'How do I know which type of video is right for my business?',
       'answer':
-      'Nullam faucibus eleifend mi eu varius. Integer vel tincidunt massa, quis semper odio. Mauris et mollis quam. Nullam fringilla erat id ante commodo maximus',
+      'Just reach out to us! We’ll discuss your product or service, goals, and target audience. Once we understand your needs, we can recommend the type of video that will deliver the best results.',
     },
     {
-      'question': 'Better Security And Faster Server?',
+      'question': 'Do you create video animations beyond the ones listed?',
+      'answer':
+      'Absolutely! Our team is highly versatile, and we’re happy to explore any creative video project you have in mind. Just let us know your ideas, and we’ll make it happen.',
     },
     {
-      'question': 'Deployment Within Few Minutes',
+      'question': 'What’s the next step once I’ve chosen a video type?',
+      'answer':
+      'If you already know the type of video you want, drop us a message via email. We’ll set up a call at your convenience to discuss your project and get started.',
+    },
+    {
+      'question': 'Can you help with branding and visual storytelling in my videos?',
+      'answer':
+      'Yes! We don’t just create videos; we craft visual stories that reflect your brand identity, engage your audience, and communicate your message effectively.',
     },
   ];
 
@@ -42,9 +48,9 @@ class _FaqSectionState extends State<FaqSection> {
               children: [
                 Chip(
                   label: Text(
-                    "FAQ'S",
+                    "Ask Erudite".toUpperCase(),
                     style: TextStyle(
-                      color: Colors.blueAccent,
+                      color: const Color(0xFF6B48ED),
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -52,18 +58,19 @@ class _FaqSectionState extends State<FaqSection> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Let’s Make Something\nAwesome Together",
+                  "Together, We\n Animate Your Ideas",
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple[900],
+                    color: const Color(0xFF6B48ED),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "We’re not just another agency – we’re your digital growth partners. "
-                      "With years of industry experience and a passion for innovation, our team is "
-                      "dedicated to delivering measurable results propel your business forward.",
+                  "We’re not just another studio – we’re your creative partners. "
+                      "With expertise in motion graphics, 2D/3D animations, and "
+                      "design, our team is dedicated to crafting visuals that "
+                      "engage your audience and elevate your brand.",
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
                 const SizedBox(height: 30),
@@ -71,13 +78,13 @@ class _FaqSectionState extends State<FaqSection> {
                 const SizedBox(height: 10),
                 Row(
                   children: const [
-                    Icon(Icons.check_circle, color: Colors.deepPurple, size: 18),
+                    Icon(Icons.check_circle, color: const Color(0xFF6B48ED), size: 18),
                     SizedBox(width: 6),
                     Text("Top quality service"),
                     SizedBox(width: 20),
-                    Icon(Icons.check_circle, color: Colors.deepPurple, size: 18),
+                    Icon(Icons.check_circle, color: const Color(0xFF6B48ED), size: 18),
                     SizedBox(width: 6),
-                    Text("Intermodal Shipping"),
+                    Text("Visual Solutions"),
                   ],
                 )
               ],
@@ -134,7 +141,7 @@ class _FaqSectionState extends State<FaqSection> {
                               isExpanded
                                   ? Icons.keyboard_arrow_up
                                   : Icons.keyboard_arrow_right,
-                              color: Colors.deepPurple,
+                              color: const Color(0xFF6B48ED),
                             ),
                           ],
                         ),

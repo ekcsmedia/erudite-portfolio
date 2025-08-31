@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TestimonialSection extends StatelessWidget {
-  const TestimonialSection({super.key});
+class TestimonialSection1 extends StatelessWidget {
+  const TestimonialSection1({super.key});
 
   @override
   Widget build(BuildContext context) {

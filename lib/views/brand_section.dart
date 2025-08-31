@@ -1,3 +1,4 @@
+import 'package:erudite/views/widgets/brand_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,23 +15,12 @@ class BrandsSection extends StatelessWidget {
           Text(
             '1k+ Brands Trust Us',
             style: GoogleFonts.poppins(
-              fontSize: 14,
-              fontWeight: FontWeight.w600,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Contentful'),
-              const SizedBox(width: 24),
-              Text('Culture Amp'),
-              const SizedBox(width: 24),
-              Text('Dropbox'),
-              const SizedBox(width: 24),
-              Text('Airtable'),
-            ],
-          ),
+          BrandSlider(),
         ],
       ),
     );

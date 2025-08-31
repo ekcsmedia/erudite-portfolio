@@ -13,31 +13,30 @@ class OurServicesSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            decoration: BoxDecoration(
+              color: const Color(0xFFE8E0FB),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              'OUR EXPERTISE',
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xFF6B48ED),
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
           // Top title and button row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFE8E0FB),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text(
-                      'OUR SERVICES',
-                      style: GoogleFonts.poppins(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFF6B48ED),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
                   Text(
-                    'Use SEO To Drive Growth\nAt Your Business',
+                    'End-to-end e-Learning solutions\n that engage, educate, and\n illuminate',
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,
@@ -75,18 +74,24 @@ class OurServicesSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _buildServiceCard(
-                title: 'Search Engine Optimizations',
-                imagePath: 'assets/images/seo1.png',
+                title: 'ELearning Content\n Development',
+                imagePath: 'assets/images/s1.png',
+                description:
+                    'Custom-designed learning modules, interactive animations, and engaging visuals that make education accessible, impactful, and learner-focused',
               ),
               const SizedBox(width: 20),
               _buildServiceCard(
-                title: 'One Page SEO Optimization',
-                imagePath: 'assets/images/seo2.png',
+                title: 'Whiteboard &\n Infographicn Animation',
+                imagePath: 'assets/images/s2.png',
+                description:
+                    'Clean, visual storytelling using whiteboard sketches and animated infographics to explain ideas quickly and effectively',
               ),
               const SizedBox(width: 20),
               _buildServiceCard(
-                title: 'Keyword Research Strategy',
-                imagePath: 'assets/images/seo3.png',
+                title: 'Character & Asset\n Design',
+                imagePath: 'assets/images/s3.png',
+                description:
+                    'Unique characters, detailed backgrounds, and creative assets designed to elevate your brand and enhance your storytelling',
               ),
               const SizedBox(width: 20),
             ],
@@ -96,7 +101,10 @@ class OurServicesSection extends StatelessWidget {
     );
   }
 
-  Widget _buildServiceCard({required String title, required String imagePath}) {
+  Widget _buildServiceCard(
+      {required String title,
+      required String imagePath,
+      required String description}) {
     return Container(
       width: 250,
       padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -114,12 +122,7 @@ class OurServicesSection extends StatelessWidget {
       ),
       child: Column(
         children: [
-          true
-              ? Container(
-                  height: 100,
-                  color: Colors.grey,
-                )
-              : Image.asset(imagePath, height: 100), // replace with your image
+          Image.asset(imagePath, height: 100), // replace with your image
           const SizedBox(height: 16),
           Text(
             title,

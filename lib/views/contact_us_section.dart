@@ -36,7 +36,7 @@ class ContactUsBanner extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 const Text(
-                  "24/7 Expert Hosting Support\nOur Customers Love",
+                  "24/7 Expert Services\nOur Customers Love",
                   style: TextStyle(
                     fontSize: 24,
                     color: Colors.white,

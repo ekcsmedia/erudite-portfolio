@@ -28,7 +28,7 @@ class SeoGrowthSection extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                       child: Text(
-                        'WHY WE DO',
+                        'OUR PURPOSE',
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: const Color(0xFF6B48ED),
@@ -38,7 +38,7 @@ class SeoGrowthSection extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'Use SEO To Drive Growth At Your Business',
+                      'Transforming concepts into \npowerful visuals',
                       style: GoogleFonts.poppins(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
@@ -54,7 +54,8 @@ class SeoGrowthSection extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: Text(
-                    'The long established fact that a reader will be distracted by the readable content of page when looking at layout the point.',
+                    'Our mission is to transform static information into dynamic visual experiences that inspire '
+                        'understanding and retention.',
                     style: GoogleFonts.poppins(
                       fontSize: 13,
                       color: Colors.black54,
@@ -67,12 +68,13 @@ class SeoGrowthSection extends StatelessWidget {
           const SizedBox(height: 32),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
             children: [
-              _buildEnhancedCard('Better Audiences', Icons.groups),
+              _buildEnhancedCard('Audience Magnet', Icons.groups, "Attract, engage, and retain your ideal audience with purposeful animation"),
               const SizedBox(width: 2),
-              _buildEnhancedCard('Better Analytics', Icons.bar_chart),
+              _buildEnhancedCard('Insight-Driven', Icons.bar_chart, "Content designed to boost your KPIs and support smarter decision-making"),
               const SizedBox(width: 2),
-              _buildEnhancedCard('Better Output', Icons.auto_graph),
+              _buildEnhancedCard('Visual Brilliance', Icons.auto_graph, "From the first sketch to the final frame, every detail crafted to stand out"),
               const SizedBox(width: 2),
               _buildImageCard(),
             ],
@@ -82,9 +84,10 @@ class SeoGrowthSection extends StatelessWidget {
     );
   }
 
-  Widget _buildEnhancedCard(String title, IconData icon) {
+  Widget _buildEnhancedCard(String title, IconData icon, String description) {
     return Container(
-      width: 180,
+      width: 240,
+      height: 240,
       margin: const EdgeInsets.only(right: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -122,7 +125,7 @@ class SeoGrowthSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Collaboratively formulate principle capital. Progressively evolve user revolutionary hosting services.',
+            description,
             style: GoogleFonts.poppins(
               fontSize: 12,
               color: Colors.black54,
@@ -141,17 +144,26 @@ class SeoGrowthSection extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         image: const DecorationImage(
-          image: AssetImage('assets/images/woman_megaphone.png'), // replace with your image
+          image: AssetImage('assets/images/background.jpg'), // base image
           fit: BoxFit.cover,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12.withOpacity(0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
+      ),
+      child: Stack(
+        children: [
+          // top image (announcement)
+          Positioned(
+            top: 12,
+            left: 12,
+            right: 12,
+            child: Image.asset(
+              'assets/images/announcement.png',
+              height: 220,
+              fit: BoxFit.contain,
+            ),
           ),
         ],
       ),
     );
   }
+
 }
