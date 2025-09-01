@@ -311,12 +311,12 @@ class _FaqAccordionState extends State<FaqAccordion> {
       title: 'What types of animated storytelling do you offer?',
       content:
       'We create marketing campaign visuals, ad creatives, promotional animations, social media content, and other branded marketing materials tailored to your business needs.',
+      isExpanded: true
     ),
     FaqItem(
       title: 'How do you ensure the visuals align with our brand?',
       content:
       'We work closely with you to understand your brand identity, target audience, and campaign goals, ensuring every design reflects your brand’s personality and messaging.',
-      isExpanded: true,
     ),
     FaqItem(
       title: 'Can you handle both digital and print advertising designs?',

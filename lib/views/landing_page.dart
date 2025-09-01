@@ -1,4 +1,5 @@
 import 'package:erudite/views/seo_growth_section.dart';
+import 'package:erudite/views/services/services_screen.dart';
 import 'package:erudite/views/testimonial_section.dart';
 import 'package:flutter/material.dart';
 import 'about_us/about_us.dart';
@@ -37,7 +38,7 @@ class LandingPage extends StatelessWidget {
                 // CaseStudiesSection(),
                 FaqSection(),
                 ContactUsBanner(),
-                TestimonialSection(),
+                TestimonialSectionServices(),
                 BlogSection(),
               ],
             ),

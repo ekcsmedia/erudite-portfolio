@@ -51,7 +51,7 @@ class TestimonialSection1 extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
-                  "Your Marketing Solutions\nHappy Clients Says?",
+                  "What our happy customers are saying",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,

@@ -36,7 +36,7 @@ class OurServicesSection extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'End-to-end e-Learning solutions\n that engage, educate, and\n illuminate',
+                    'End-to-End E-Learning solutions\nthat engage, educate, and\nilluminate',
                     style: GoogleFonts.poppins(
                       fontSize: 24,
                       fontWeight: FontWeight.w600,

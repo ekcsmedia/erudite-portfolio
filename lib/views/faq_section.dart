@@ -8,7 +8,7 @@ class FaqSection extends StatefulWidget {
 }
 
 class _FaqSectionState extends State<FaqSection> {
-  int? expandedIndex = 1;
+  int? expandedIndex = 0;
 
   final List<Map<String, String>> faqs = [
     {
@@ -58,7 +58,7 @@ class _FaqSectionState extends State<FaqSection> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  "Together, We\n Animate Your Ideas",
+                  "Together, We\nAnimate Your Ideas",
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class _FaqSectionState extends State<FaqSection> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: isExpanded ? Colors.deepPurple : Colors.black87,
+                                  color: isExpanded ? const Color(0xFF6B48ED) : Colors.black87,
                                 ),
                               ),
                             ),

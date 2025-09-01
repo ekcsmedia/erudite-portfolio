@@ -71,8 +71,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 'Blogs',
                 items: {
                   'Blog Grid': '/blog-grid',
-                  'Blog Details': '/blog-details',
-                },
+                  // 'Blog Details': '/blog-details',
+                }
               ),
 
               _buildMenuItem('Contact Us',

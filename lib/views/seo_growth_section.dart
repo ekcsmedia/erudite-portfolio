@@ -37,32 +37,38 @@ class SeoGrowthSection extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    Text(
-                      'Transforming concepts into \npowerful visuals',
-                      style: GoogleFonts.poppins(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black87,
-                      ),
+                    Row(
+                      children: [
+                        Text(
+                          'Transforming concepts into \npowerful visuals',
+                          style: GoogleFonts.poppins(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        Spacer(),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 24),
+                            child: Text(
+                              'Our mission is to transform static information\ninto dynamic visual experiences that inspire '
+                                  '\nunderstanding and retention.',
+                              style: GoogleFonts.poppins(
+                                fontSize: 13,
+                                color: Colors.black54,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
               // Right
-              Expanded(
-                flex: 3,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: Text(
-                    'Our mission is to transform static information into dynamic visual experiences that inspire '
-                        'understanding and retention.',
-                    style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ),
-              ),
+
             ],
           ),
           const SizedBox(height: 32),
