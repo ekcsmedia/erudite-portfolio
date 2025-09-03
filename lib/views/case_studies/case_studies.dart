@@ -2,6 +2,7 @@ import 'package:erudite/views/case_studies/service_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../ai-based/home/faq3.dart';
+import '../../utils/video_play_drive.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
 
@@ -12,6 +13,19 @@ class CaseStudiesScreen extends StatefulWidget {
 }
 
 class CaseStudiesScreenState extends State<CaseStudiesScreen> {
+
+  final List<String> videoIds = [
+    "1l0rtPqaG00Yoj2yl3V8Pn8l9kU_dqm5U",
+    "1re9rPEH6bh4NJ9lHOGHlUs2ioGEa72vS",
+    "1ffEsp-5ANsVXpyC-SoG33z3MOurHvZ5f",
+    "10j6za9IjICnLRxzF0L1BJXVzaZZZU95N",
+    "1lE3OuhMPYwnG4zFoNJQPeyRHcIKMaMvU",
+    "1axkZkuSpXZoXDIwqZBLnbOFTdTyzzkYR",
+    "1eudw4fNRRAi-JJ45ASnpWTwMzB7B6DiK",
+    "1VoiAgv-773CFPeuCCpGUwU1E5uzucq_L",
+    "1xah1lMV8J7x3SpaV10_O1j694NfqU5Mb",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +45,33 @@ class CaseStudiesScreenState extends State<CaseStudiesScreen> {
               const SizedBox(
                 height: 60,
               ),
+              Text(
+                "Our Projects",
+                style: GoogleFonts.poppins(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF1C0A37),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(), // allow scrolling with page
+                itemCount: videoIds.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 16 / 9,
+                ),
+                itemBuilder: (context, index) {
+                  return GoogleDriveIframePlayer(fileId: videoIds[index]);
+                },
+              ),
+
+              const SizedBox(height: 60),
+
               const FooterSection(),
             ],
           ),

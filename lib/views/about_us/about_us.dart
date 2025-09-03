@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../utils/video_play_drive.dart';
+
 class AboutUsPage extends StatelessWidget {
   const AboutUsPage({Key? key}) : super(key: key);
 
@@ -384,15 +386,25 @@ class AboutCompanySection extends StatelessWidget {
 
 // ================= MARKETING EFFECTIVENESS ==================
 
-class CounterSection extends StatelessWidget {
+class CounterSection extends StatefulWidget {
   const CounterSection({super.key});
+
+  @override
+  State<CounterSection> createState() => _CounterSectionState();
+}
+
+class _CounterSectionState extends State<CounterSection> {
+  bool _isPlaying = false;
+
+  // Replace this with your Google Drive fileId
+  final String fileId = "113dErrBM32NBdZRGUyBhrUQRuuip1NQy";
 
   @override
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: CurvedBottomClipper(),
       child: Container(
-        color: const Color(0xFF7B42F6), // Purple background
+        color: const Color(0xFF7B42F6),
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
         child: Column(
           children: [
@@ -439,10 +451,12 @@ class CounterSection extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
-            // Image with play button overlay
+            // Image or Video
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Stack(
+              child: _isPlaying
+                  ? GoogleDriveIframePlayer(fileId: fileId)
+                  : Stack(
                 alignment: Alignment.center,
                 children: [
                   Image.asset(
@@ -451,17 +465,24 @@ class CounterSection extends StatelessWidget {
                     width: double.infinity,
                     height: 250,
                   ),
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.9),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.play_arrow,
-                      color: Color(0xFF6B48ED),
-                      size: 36,
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isPlaying = true;
+                      });
+                    },
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.play_arrow,
+                        color: Color(0xFF6B48ED),
+                        size: 36,
+                      ),
                     ),
                   ),
                 ],
@@ -479,16 +500,16 @@ class CounterSection extends StatelessWidget {
         Text(
           value,
           style: GoogleFonts.poppins(
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: FontWeight.w700,
             color: Colors.white,
           ),
         ),
+        const SizedBox(height: 4),
         Text(
           label,
           style: GoogleFonts.poppins(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
+            fontSize: 14,
             color: Colors.white.withOpacity(0.9),
           ),
         ),
