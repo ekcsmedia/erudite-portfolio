@@ -1,16 +1,15 @@
-// google_drive_iframe_player.dart
+// lib/utils/video_play_drive.dart
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:ui_web' as ui_web; // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
-
-import '../main.dart' show routeObserver;
+import '../main.dart' show routeObserver; // adjust the import path based on file structure
 
 /// Route-aware Google Drive iframe player:
 /// - registers a unique viewType per widget instance
-/// - pauses playback by setting iframe.src='about:blank' when another route is pushed on top
-/// - restores iframe.src when the route becomes visible again
+/// - pauses playback when the route is not visible
+/// - removes iframe on dispose
 class GoogleDriveIframePlayer extends StatefulWidget {
   final String fileId;
   final double aspectRatio;
@@ -30,13 +29,14 @@ class GoogleDriveIframePlayer extends StatefulWidget {
 
 class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
     with RouteAware {
-  late String _viewType;
+  late final String _viewType;
   late final String _videoUrl;
   bool _registered = false;
 
   @override
   void initState() {
     super.initState();
+
     final uniqueSuffix = DateTime.now().microsecondsSinceEpoch;
     _viewType = 'gdrive-${widget.fileId}-$uniqueSuffix';
     _videoUrl = 'https://drive.google.com/file/d/${widget.fileId}/preview';
@@ -63,6 +63,7 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
             ..setAttribute('allow', 'autoplay; encrypted-media; fullscreen')
             ..setAttribute('allowtransparency', 'true');
 
+          // overlay to forward wheel events and allow "click to activate"
           final overlay = html.DivElement()
             ..style.position = 'absolute'
             ..style.top = '0'
@@ -91,17 +92,15 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
         });
 
         _registered = true;
-      } catch (e) {
-        // ignore registration errors
-        _registered = false;
-        // avoid printing raw JS objects into diagnostics
+      } catch (err) {
+        // avoid printing raw JS objects
         // ignore: avoid_print
-        print('registerViewFactory skipped for $_viewType: $e');
+        print('registerViewFactory skipped for $_viewType: ${err.toString()}');
+        _registered = false;
       }
     }
   }
 
-  // Subscribe to routeObserver so we get visibility callbacks
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -113,33 +112,26 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
 
   @override
   void dispose() {
-    // unsubscribe
     try {
       routeObserver.unsubscribe(this);
     } catch (_) {}
-    // cleanup iframe
     _stopAndRemoveIframe();
     super.dispose();
   }
 
-  // RouteAware callbacks:
   @override
   void didPushNext() {
-    // Another route was pushed above this one -> pause video
     _pauseIframe();
   }
 
   @override
   void didPopNext() {
-    // Returned to this route -> resume video (restore src)
     _resumeIframe();
   }
 
-  // Helpers to control iframe
   void _pauseIframe() {
     if (!kIsWeb) return;
     try {
-      // find iframe by id
       final node = html.document.getElementById(_viewType);
       if (node is html.IFrameElement) {
         node.src = 'about:blank';
@@ -147,19 +139,16 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
         final iframe = node.querySelector('iframe');
         if (iframe is html.IFrameElement) iframe.src = 'about:blank';
       } else {
-        // fallback: remove any iframe that matches fileId
         final matches = html.document.querySelectorAll('iframe');
         for (final el in matches) {
           final src = el.getAttribute('src') ?? '';
-          if (src.contains(widget.fileId)) {
-            el.setAttribute('src', 'about:blank');
-          }
+          if (src.contains(widget.fileId)) el.setAttribute('src', 'about:blank');
         }
       }
-    } catch (e) {
-      // swallow JS errors
+    } catch (err) {
+      // ignore JS errors, but print safely
       // ignore: avoid_print
-      print('pauseIframe error: $e');
+      print('pauseIframe error: ${err.toString()}');
     }
   }
 
@@ -173,7 +162,6 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
         final iframe = node.querySelector('iframe');
         if (iframe is html.IFrameElement) iframe.src = _videoUrl;
       } else {
-        // fallback: try to restore iframes that match fileId but are blank
         final matches = html.document.querySelectorAll('iframe');
         for (final el in matches) {
           final src = el.getAttribute('src') ?? '';
@@ -182,10 +170,10 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
           }
         }
       }
-    } catch (e) {
+    } catch (err) {
       // ignore
       // ignore: avoid_print
-      print('resumeIframe error: $e');
+      print('resumeIframe error: ${err.toString()}');
     }
   }
 
@@ -205,15 +193,13 @@ class _GoogleDriveIframePlayerState extends State<GoogleDriveIframePlayer>
         final matches = html.document.querySelectorAll('iframe');
         for (final el in matches) {
           final src = el.getAttribute('src') ?? '';
-          if (src.contains(widget.fileId)) {
-            el.remove();
-          }
+          if (src.contains(widget.fileId)) el.remove();
         }
       }
-    } catch (e) {
+    } catch (err) {
       // ignore
       // ignore: avoid_print
-      print('stopAndRemove error: $e');
+      print('stopAndRemove error: ${err.toString()}');
     }
   }
 

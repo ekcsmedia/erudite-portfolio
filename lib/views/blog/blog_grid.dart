@@ -5,6 +5,7 @@ import '../../ai-based/home/faq3.dart';
 import '../../utils/app_scaffold.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
+import '../widgets/footer_common.dart';
 import 'blog_card.dart';
 
 class BlogGridScreen extends StatefulWidget {
@@ -50,7 +51,7 @@ class BlogGridScreenState extends State<BlogGridScreen> {
               const SizedBox(
                 height: 60,
               ),
-              const FooterSection(),
+              const FooterSectionCommon(),
             ],
           ),
         ),

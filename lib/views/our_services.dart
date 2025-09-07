@@ -135,7 +135,7 @@ class OurServicesSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'Collaboratively formulate principle capital doing progressively evolve user',
+            description,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
               fontSize: 11,

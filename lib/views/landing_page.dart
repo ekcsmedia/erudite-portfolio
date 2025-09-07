@@ -1,18 +1,15 @@
 import 'package:erudite/views/seo_growth_section.dart';
 import 'package:erudite/views/services/services_screen.dart';
-import 'package:erudite/views/testimonial_section.dart';
+import 'package:erudite/views/widgets/footer_common.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_scaffold.dart';
 import 'about_us/about_us.dart';
 import 'blog/blog_card.dart';
-import 'blogs_news_section.dart';
 import 'brand_section.dart';
-import 'case_studies.dart';
 import 'client_stats_card.dart';
 import 'contact_us_section.dart';
 import 'custom_appbar.dart';
 import 'faq_section.dart';
-import 'free_marketing_card.dart';
 import 'hero_widget.dart';
 import 'our_services.dart';
 
@@ -34,7 +31,7 @@ class LandingPage extends StatelessWidget {
                 SeoGrowthSection(),
                 ClientStatsCard(),
                 OurServicesSection(),
-                FreeMarketingCard(),
+                // FreeMarketingCard(),
                 AboutCompanySection(),
                 // CaseStudiesSection(),
                 FaqSection(),
@@ -46,7 +43,7 @@ class LandingPage extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            FooterSection()
+            FooterSectionCommon()
           ],
         ),
       ),

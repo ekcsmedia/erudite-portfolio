@@ -6,6 +6,7 @@ import '../../utils/app_scaffold.dart';
 import '../../utils/video_play_drive.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
+import '../widgets/footer_common.dart';
 
 class CaseStudiesScreen extends StatefulWidget {
   const CaseStudiesScreen({super.key});
@@ -73,7 +74,7 @@ class CaseStudiesScreenState extends State<CaseStudiesScreen> {
 
               const SizedBox(height: 60),
 
-              const FooterSection(),
+              const FooterSectionCommon(),
             ],
           ),
         ),

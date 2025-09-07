@@ -12,9 +12,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+
+// only import dart:html when we need it
+// we will use it inside the registration function below
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:ui_web' as ui; // only used when kIsWeb is true
-import 'dart:html' show IFrameElement; // only used on web
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // optional
+// dart:html is referenced inside the register function only
+// so we keep the import but avoid using JS objects anywhere else
+import 'dart:html' show IFrameElement;
+
 final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
 
 void main() {
@@ -29,6 +35,7 @@ void _registerMapIframeIfWeb() {
     ui.platformViewRegistry.registerViewFactory(
       'google-map',
           (int viewId) {
+        // always return a freshly created IFrameElement — do not keep it in a Dart field
         final iframe = IFrameElement()
           ..src =
               "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509458!2d144.96305761531695!3d-37.81627937975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5775c0f5a2a2d2!2sEnvato!5e0!3m2!1sen!2sau!4v1602131234567"
@@ -38,11 +45,10 @@ void _registerMapIframeIfWeb() {
         return iframe;
       },
     );
-  } catch (e) {
-    // It's okay if registration fails (already registered or other issue).
-    // Avoid throwing raw JS objects into Flutter diagnostics.
+  } catch (err) {
+    // Avoid printing raw JS objects. Convert to string.
     // ignore: avoid_print
-    print('Map iframe registration skipped or failed: $e');
+    print('Map iframe registration skipped or failed: ${err.toString()}');
   }
 }
 

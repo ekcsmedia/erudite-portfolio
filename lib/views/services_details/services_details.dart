@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../ai-based/home/faq3.dart';
 import '../../utils/app_scaffold.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
+import '../widgets/footer_common.dart';
 
 class ServicesDetailsScreen extends StatefulWidget {
   const ServicesDetailsScreen({super.key});
@@ -12,6 +14,37 @@ class ServicesDetailsScreen extends StatefulWidget {
 }
 
 class ServicesDetailsScreenState extends State<ServicesDetailsScreen> {
+  // current selected service title (drives content shown)
+  late String selectedServiceTitle;
+
+  final List<String> services = [
+    "Animated Storytelling",
+    "Visual Design & Illustration",
+    "Advertising & Marketing Design",
+    "Storyboarding & Concept Development",
+    "ELearning Solutions",
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    // read argument from Get (if present) and default to first service
+    final args = Get.arguments;
+    if (args is Map &&
+        args['title'] is String &&
+        services.contains(args['title'])) {
+      selectedServiceTitle = args['title'];
+    } else {
+      selectedServiceTitle = services[0];
+    }
+  }
+
+  void _onSelectService(String title) {
+    setState(() {
+      selectedServiceTitle = title;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -37,11 +70,14 @@ class ServicesDetailsScreenState extends State<ServicesDetailsScreen> {
                 ),
               ),
               // ServicesScreenWidget(),
-              const ServicesTiles(),
+              ServicesTiles(
+                selectedServiceTitle: selectedServiceTitle,
+                onServiceSelected: _onSelectService,
+              ),
               const SizedBox(
                 height: 60,
               ),
-              const FooterSection(),
+              const FooterSectionCommon(),
             ],
           ),
         ),
@@ -155,8 +191,17 @@ class ServicesDetailsBanner extends StatelessWidget {
   }
 }
 
+// Replace ServicesTiles, IntroSection, FaqAccordion definitions with this:
+
 class ServicesTiles extends StatelessWidget {
-  const ServicesTiles({super.key});
+  final String selectedServiceTitle;
+  final ValueChanged<String> onServiceSelected;
+
+  const ServicesTiles({
+    super.key,
+    required this.selectedServiceTitle,
+    required this.onServiceSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -172,20 +217,32 @@ class ServicesTiles extends StatelessWidget {
                 LayoutBuilder(
                   builder: (context, constraints) {
                     if (constraints.maxWidth > 800) {
-                      return const Row(
+                      return Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(flex: 2, child: IntroSection()),
-                          SizedBox(width: 40),
-                          Expanded(flex: 3, child: FaqAccordion()),
+                          // IntroSection (left) - pass selected title & callback
+                          Expanded(
+                              flex: 2,
+                              child: IntroSection(
+                                selectedTitle: selectedServiceTitle,
+                                onSelect: onServiceSelected,
+                              )),
+                          const SizedBox(width: 40),
+                          // FaqAccordion (right) - service-specific content
+                          Expanded(
+                              flex: 3,
+                              child: FaqAccordion(
+                                  serviceTitle: selectedServiceTitle)),
                         ],
                       );
                     } else {
-                      return const Column(
+                      return Column(
                         children: [
-                          IntroSection(),
-                          SizedBox(height: 40),
-                          FaqAccordion(),
+                          IntroSection(
+                              selectedTitle: selectedServiceTitle,
+                              onSelect: onServiceSelected),
+                          const SizedBox(height: 40),
+                          FaqAccordion(serviceTitle: selectedServiceTitle),
                         ],
                       );
                     }
@@ -201,28 +258,51 @@ class ServicesTiles extends StatelessWidget {
   }
 }
 
-// ✅ Your existing IntroSection, _ServicePoint, FaqAccordion, FaqItem, FaqTile, CtaBanner stay unchanged.
-
-
+/// IntroSection updated to accept selectedTitle and callback
 class IntroSection extends StatefulWidget {
-  const IntroSection({super.key});
+  final String selectedTitle;
+  final ValueChanged<String> onSelect;
+
+  const IntroSection({
+    super.key,
+    required this.selectedTitle,
+    required this.onSelect,
+  });
 
   @override
   State<IntroSection> createState() => _IntroSectionState();
 }
 
 class _IntroSectionState extends State<IntroSection> {
-
   final List<String> services = [
     "Animated Storytelling",
     "Visual Design & Illustration",
     "Advertising & Marketing Design",
     "Storyboarding & Concept Development",
-    "eLearning Solutions",
+    "ELearning Solutions",
   ];
 
-  int selectedIndex = 0; // initially first one is selected
-  //  @override
+  late int selectedIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedIndex = services.indexOf(widget.selectedTitle);
+    if (selectedIndex < 0) selectedIndex = 0;
+  }
+
+  @override
+  void didUpdateWidget(covariant IntroSection oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final idx = services.indexOf(widget.selectedTitle);
+    if (idx >= 0 && idx != selectedIndex) {
+      setState(() {
+        selectedIndex = idx;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 320,
@@ -237,10 +317,7 @@ class _IntroSectionState extends State<IntroSection> {
           // Heading
           const Text(
             "All Services",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
 
@@ -253,38 +330,33 @@ class _IntroSectionState extends State<IntroSection> {
                   setState(() {
                     selectedIndex = index;
                   });
+                  widget.onSelect(services[index]);
                 },
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 12),
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16, vertical: 14),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   decoration: BoxDecoration(
-                    color: isSelected
-                        ?  Color(0xFF6B48ED)
-                        : Colors.white,
+                    color: isSelected ? const Color(0xFF6B48ED) : Colors.white,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: Colors.grey.shade300,
-                    ),
+                    border: Border.all(color: Colors.grey.shade300),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        services[index],
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: isSelected
-                              ? Colors.white
-                              : Colors.black,
+                      Flexible(
+                        child: Text(
+                          services[index],
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: isSelected ? Colors.white : Colors.black,
+                          ),
                         ),
                       ),
                       Icon(
                         Icons.arrow_forward,
-                        color: isSelected
-                            ? Colors.white
-                            : Colors.black,
+                        color: isSelected ? Colors.white : Colors.black,
                         size: 18,
                       ),
                     ],
@@ -299,106 +371,208 @@ class _IntroSectionState extends State<IntroSection> {
   }
 }
 
+/// FaqAccordion reads the serviceTitle and shows service-specific content.
+/// I placed concise content for each service based on the long copy you provided.
 class FaqAccordion extends StatefulWidget {
-  const FaqAccordion({super.key});
+  final String serviceTitle;
+  const FaqAccordion({super.key, required this.serviceTitle});
 
   @override
   State<FaqAccordion> createState() => _FaqAccordionState();
 }
 
 class _FaqAccordionState extends State<FaqAccordion> {
-  final List<FaqItem> _faqItems = [
-    FaqItem(
-      title: 'What types of animated storytelling do you offer?',
-      content:
-      'We create marketing campaign visuals, ad creatives, promotional animations, social media content, and other branded marketing materials tailored to your business needs.',
-      isExpanded: true
-    ),
-    FaqItem(
-      title: 'How do you ensure the visuals align with our brand?',
-      content:
-      'We work closely with you to understand your brand identity, target audience, and campaign goals, ensuring every design reflects your brand’s personality and messaging.',
-    ),
-    FaqItem(
-      title: 'Can you handle both digital and print advertising designs?',
-      content:
-      'Yes! Our team is skilled in designing visuals for digital platforms, social media, websites, and print mediums such as brochures, posters, and banners.',
-    ),
-    FaqItem(
-      title: 'Can you create marketing visuals for a specific campaign or product launch?',
-      content:
-      'Absolutely! We tailor each project to your campaign objectives, designing visuals and animations that highlight your product or service and engage your audience effectively.',
-    ),
-  ];
+  // minimal FAQ data keyed by service title
+  final Map<String, Map<String, dynamic>> _serviceContent = {
+    "Animated Storytelling": {
+      "intro":
+          "Animated Storytelling communicates ideas through motion graphics, 2D/3D animations, whiteboard and infographics. We transform complex concepts into engaging narratives.",
+      "whatWeProvide":
+          "Concepts, storyboarding, character design, illustrations and full animation production for marketing videos, eLearning modules and product demos.",
+      "features": [
+        "Motion Impact",
+        "Creative Narratives",
+        "Multi-Format Delivery",
+        "Brand Consistency"
+      ],
+      "faqs": [
+        {
+          "q": "What types of animated storytelling do you offer?",
+          "a":
+              "We create motion graphics, 2D/3D animations, whiteboard and infographics tailored to your goals."
+        },
+        {
+          "q": "Can you adapt storytelling for campaigns?",
+          "a":
+              "Yes — we align storytelling with brand identity and campaign objectives."
+        },
+      ],
+    },
+    "Visual Design & Illustration": {
+      "intro":
+          "Visual Design & Illustration creates compelling graphics, characters and assets that strengthen brand identity across digital and print channels.",
+      "whatWeProvide":
+          "Custom illustrations, character design, backgrounds and assets optimized for web, social and print.",
+      "features": [
+        "Custom Illustrations",
+        "Character Design",
+        "Background & Assets",
+        "Visual Cohesion"
+      ],
+      "faqs": [
+        {
+          "q": "What types of illustrations do you provide?",
+          "a":
+              "We produce brand-led illustrations, characters and assets suited to your project."
+        },
+        {
+          "q": "Digital + print?",
+          "a":
+              "Yes — assets are delivered for both digital and print use with proper export settings."
+        },
+      ],
+    },
+    "Advertising & Marketing Design": {
+      "intro":
+          "Marketing creatives and ad design that convert — ad banners, social spots, and promotional animation.",
+      "whatWeProvide":
+          "End-to-end campaign visuals, storyboards for ads, and quick-turn promo videos.",
+      "features": [
+        "Campaign Creatives",
+        "Ad Optimization",
+        "Fast Turnaround",
+        "A/B Friendly"
+      ],
+      "faqs": [
+        {
+          "q": "Can you create campaign-ready ads?",
+          "a":
+              "Yes. We produce assets optimized for social platforms and ad networks."
+        },
+      ],
+    },
+    "Storyboarding & Concept Development": {
+      "intro":
+          "We blueprint your story: scene-by-scene storyboards, shot planning and concept sketches to save production time.",
+      "whatWeProvide":
+          "Visual storyboards, sketches, scene breakdowns and timing guidance for animation/video.",
+      "features": [
+        "Visual Storyboards",
+        "Concept Sketches",
+        "Creative Planning",
+        "Execution Blueprint"
+      ],
+      "faqs": [
+        {
+          "q": "What does storyboarding include?",
+          "a":
+              "Scene layouts, timing guidance and visual sequence planning; it streamlines production."
+        },
+      ],
+    },
+    "ELearning Solutions": {
+      "intro":
+          "Interactive animated eLearning that simplifies complex topics and improves learning outcomes.",
+      "whatWeProvide":
+          "Explainer animations, interactive modules, assessments, and LMS-ready formats.",
+      "features": [
+        "Interactive Modules",
+        "Explainer Animations",
+        "Infographics",
+        "Multi-Device"
+      ],
+      "faqs": [
+        {
+          "q": "Can eLearning be used across platforms?",
+          "a":
+              "Yes — content is optimized for web, mobile and common LMS platforms."
+        },
+      ],
+    },
+  };
+
+  // For local expand/collapse UI
+  final List<FaqItem> _faqItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _buildFaqItemsForService(widget.serviceTitle);
+  }
+
+  void _buildFaqItemsForService(String title) {
+    _faqItems.clear();
+    final content = _serviceContent[title] ?? _serviceContent.values.first;
+    final faqs = (content['faqs'] as List<dynamic>? ?? []);
+    for (final f in faqs) {
+      _faqItems.add(FaqItem(
+          title: f['q'] ?? '', content: f['a'] ?? '', isExpanded: false));
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant FaqAccordion oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.serviceTitle != widget.serviceTitle) {
+      setState(() {
+        _buildFaqItemsForService(widget.serviceTitle);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final content =
+        _serviceContent[widget.serviceTitle] ?? _serviceContent.values.first;
+    final features = (content['features'] as List<dynamic>? ?? [])
+        .map((e) => e.toString())
+        .toList();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Section 1
-          Text(
-            "Animated Storytelling",
-            style: Theme
-                .of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text(widget.serviceTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          const Text(
-            "Animated Storytelling is the art of communicating ideas, messages, or narratives through motion graphics, 2D/3D animations, whiteboard and line drawing animations, infographics, and iconic visuals. It transforms complex concepts into engaging stories that capture attention and communicate effectively.",
-          ),
+          Text(content['intro'] ?? '', style: const TextStyle(fontSize: 14)),
           const SizedBox(height: 24),
 
-          // Section 2
-          Text(
-            "What We Provide",
-            style: Theme
-                .of(context)
-                .textTheme
-                .titleLarge
-                ?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text("What We Provide",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
-          const Text(
-            "We deliver end-to-end animation services, including concept creation, storyboarding, illustration, character design, and final animation production. Our team crafts marketing videos, eLearning modules, product demos, and brand storytelling animations that engage audiences, simplify ideas, and reflect your brand identity.",
-          ),
-          const SizedBox(height: 24),
+          Text(content['whatWeProvide'] ?? '',
+              style: const TextStyle(fontSize: 14)),
+          const SizedBox(height: 16),
+
           Wrap(
-            spacing: 16,
-            runSpacing: 12,
-            children: const [
-              FeatureItem(text: "Motion Impact"),
-              FeatureItem(text: "Creative Narratives"),
-              FeatureItem(text: "Multi-Format Delivery"),
-              FeatureItem(text: "Brand Consistency"),
-            ],
-          ),
+              spacing: 16,
+              runSpacing: 12,
+              children: features.map((f) => FeatureItem(text: f)).toList()),
           const SizedBox(height: 32),
+
+          // FAQs for selected service
           Column(
-            children: _faqItems.map((item) {
-              return FaqTile(
+              children: _faqItems.map((item) {
+            return FaqTile(
                 item: item,
                 onTap: () {
-                  setState(() {
-                    item.isExpanded = !item.isExpanded;
-                  });
-                },
-              );
-            }).toList(),
-          ),
+                  setState(() => item.isExpanded = !item.isExpanded);
+                });
+          }).toList()),
         ],
       ),
     );
   }
 }
+
 // Feature Item
 class FeatureItem extends StatelessWidget {
   final String text;
@@ -409,7 +583,7 @@ class FeatureItem extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const Icon(Icons.check_circle, color:  Color(0xFF6B48ED), size: 20),
+        const Icon(Icons.check_circle, color: Color(0xFF6B48ED), size: 20),
         const SizedBox(width: 6),
         Text(
           text,
@@ -419,7 +593,6 @@ class FeatureItem extends StatelessWidget {
     );
   }
 }
-
 
 class FaqItem {
   final String title;
@@ -475,14 +648,18 @@ class FaqTile extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: item.isExpanded ?  Color(0xFF6B48ED) : const Color(0xFF1E293B),
+                            color: item.isExpanded
+                                ? Color(0xFF6B48ED)
+                                : const Color(0xFF1E293B),
                           ),
                         ),
                       ),
                       const SizedBox(width: 16),
                       Icon(
-                        item.isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_right,
-                        color:  Color(0xFF6B48ED),
+                        item.isExpanded
+                            ? Icons.keyboard_arrow_down
+                            : Icons.keyboard_arrow_right,
+                        color: Color(0xFF6B48ED),
                       ),
                     ],
                   ),
@@ -494,15 +671,15 @@ class FaqTile extends StatelessWidget {
                     width: double.infinity,
                     child: item.isExpanded
                         ? Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                      child: Text(
-                        item.content,
-                        style: TextStyle(
-                          color: Colors.grey.shade600,
-                          height: 1.5,
-                        ),
-                      ),
-                    )
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                            child: Text(
+                              item.content,
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                height: 1.5,
+                              ),
+                            ),
+                          )
                         : const SizedBox.shrink(),
                   ),
                 ),
@@ -514,4 +691,3 @@ class FaqTile extends StatelessWidget {
     );
   }
 }
-

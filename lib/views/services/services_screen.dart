@@ -3,12 +3,14 @@ import 'package:erudite/views/services/testmonial_services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../main.dart';
 import '../../utils/app_scaffold.dart';
 import '../about_us/about_us.dart';
 import '../contact_us_section.dart';
+import '../widgets/footer_common.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class ServicesScreen extends StatelessWidget {
               AwesomeSection(),
               ContactUsBanner(),
               TestimonialSectionServices(),
-              FooterSection(),
+              FooterSectionCommon(),
             ],
           ),
         ),
@@ -217,63 +219,71 @@ class ServicesWrapWidget extends StatelessWidget {
         spacing: 20,
         runSpacing: 20,
         children: services.map((service) {
-          return Container(
-            width: 350,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey.shade300),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Image
-                Image.network(
-                  service.imageUrl,
-                  height: 48,
-                  width: 48,
-                ),
-                const SizedBox(height: 12),
-                // Title
-                Text(
-                  service.title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF6B48ED),
+// inside ServicesWrapWidget (replace the child returned for each service)
+          return GestureDetector(
+            onTap: () {
+              // navigate to details screen and pass the service title as argument
+              // Ensure your route '/services-details' exists (it does in your app)
+              Get.toNamed('/services-details', arguments: {'title': service.title});
+            },
+            child: Container(
+              width: 350,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Image
+                  Image.network(
+                    service.imageUrl,
+                    height: 48,
+                    width: 48,
                   ),
-                ),
-                const SizedBox(height: 8),
-                // Description
-                Text(
-                  service.description,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                // Read More link
-                Row(
-                  children: const [
-                    Text(
-                      "Read More",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF6B48ED),
-                      ),
-                    ),
-                    SizedBox(width: 4),
-                    Icon(
-                      Icons.arrow_forward,
-                      size: 16,
+                  const SizedBox(height: 12),
+                  // Title
+                  Text(
+                    service.title,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                       color: Color(0xFF6B48ED),
-                    )
-                  ],
-                )
-              ],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  // Description
+                  Text(
+                    service.description,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  // Read More link (also clickable)
+                  Row(
+                    children: const [
+                      Text(
+                        "Read More",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF6B48ED),
+                        ),
+                      ),
+                      SizedBox(width: 4),
+                      Icon(
+                        Icons.arrow_forward,
+                        size: 16,
+                        color: Color(0xFF6B48ED),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           );
         }).toList(),
