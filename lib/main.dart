@@ -1,6 +1,8 @@
 import 'package:erudite/utils/whatapp_widget.dart';
 import 'package:erudite/views/about_us/about_us.dart';
+import 'package:erudite/views/blog/blog_card.dart';
 import 'package:erudite/views/blog/blog_grid.dart';
+import 'package:erudite/views/blog_details/blog_details_screen.dart';
 import 'package:erudite/views/case_studies/case_studies.dart';
 import 'package:erudite/views/case_studies_details/case_studies_details.dart';
 import 'package:erudite/views/contact_us/contact_us.dart';
@@ -21,7 +23,8 @@ import 'dart:ui_web' as ui; // only used when kIsWeb is true
 // so we keep the import but avoid using JS objects anywhere else
 import 'dart:html' show IFrameElement;
 
-final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
+final RouteObserver<ModalRoute<void>> routeObserver =
+    RouteObserver<ModalRoute<void>>();
 
 void main() {
   _registerMapIframeIfWeb();
@@ -34,7 +37,7 @@ void _registerMapIframeIfWeb() {
   try {
     ui.platformViewRegistry.registerViewFactory(
       'google-map',
-          (int viewId) {
+      (int viewId) {
         // always return a freshly created IFrameElement — do not keep it in a Dart field
         final iframe = IFrameElement()
           ..src =
@@ -63,8 +66,17 @@ class MyApp extends StatelessWidget {
     GetPage(name: '/services', page: () => ServicesScreen()),
     GetPage(name: '/services-details', page: () => ServicesDetailsScreen()),
     GetPage(name: '/case-studies', page: () => CaseStudiesScreen()),
-    GetPage(name: '/case-studies-details', page: () => CaseStudiesDetailsScreen()),
-    GetPage(name: '/blog-grid', page: () => BlogGridScreen())
+    GetPage(
+        name: '/case-studies-details', page: () => CaseStudiesDetailsScreen()),
+    GetPage(name: '/blog-grid', page: () => BlogGridScreen()),
+    GetPage(
+      name: '/blog-details',
+      page: () {
+        final arg = Get.arguments;
+        final item = (arg is NewsItem) ? arg : newsList.first; // fallback
+        return BlogDetailsScreen(newsItem: item);
+      },
+    ),
   ];
 
   @override
