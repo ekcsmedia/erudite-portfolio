@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../ai-based/home/faq3.dart';
+import '../../utils/app_scaffold.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
 
@@ -13,7 +14,7 @@ class ServicesDetailsScreen extends StatefulWidget {
 class ServicesDetailsScreenState extends State<ServicesDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(

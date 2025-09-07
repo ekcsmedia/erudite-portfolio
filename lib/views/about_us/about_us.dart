@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../utils/app_scaffold.dart';
 import '../../utils/video_play_drive.dart';
 
 class AboutUsPage extends StatelessWidget {
@@ -13,7 +14,7 @@ class AboutUsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
@@ -396,13 +397,13 @@ class CounterSection extends StatefulWidget {
 class _CounterSectionState extends State<CounterSection> {
   bool _isPlaying = false;
 
-  // Replace this with your Google Drive fileId
+  // Your Google Drive fileId
   final String fileId = "113dErrBM32NBdZRGUyBhrUQRuuip1NQy";
 
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: CurvedBottomClipper(),
+      clipper: CurvedBottomClipper(), // keep your existing clipper
       child: Container(
         color: const Color(0xFF7B42F6),
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
@@ -439,53 +440,72 @@ class _CounterSectionState extends State<CounterSection> {
             const SizedBox(height: 20),
 
             // Counters Row
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildCounter("19.4K", "Projects Done"),
-                const SizedBox(width: 30),
-                _buildCounter("95.2K", "Happy Clients"),
-                const SizedBox(width: 30),
-                _buildCounter("142.6K", "Team Members"),
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildCounter("19.4K", "Projects Done"),
+                  const SizedBox(width: 30),
+                  _buildCounter("95.2K", "Happy Clients"),
+                  const SizedBox(width: 30),
+                  _buildCounter("142.6K", "Team Members"),
+                ],
+              ),
             ),
             const SizedBox(height: 40),
 
-            // Image or Video
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: _isPlaying
-                  ? GoogleDriveIframePlayer(fileId: fileId)
-                  : Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    "assets/images/team.jpg",
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 250,
+            // Preview area — keep same aspect ratio for both image and video
+            // Use a FractionallySizedBox so the preview isn't tiny on very wide screens.
+            FractionallySizedBox(
+              widthFactor: 0.95, // takes 95% of available width
+              child: _buildPreviewArea(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPreviewArea() {
+    const aspect = 16 / 9;
+
+    if (_isPlaying) {
+      return GoogleDriveIframePlayer(fileId: fileId, aspectRatio: aspect);
+    }
+
+    return AspectRatio(
+      aspectRatio: aspect,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset("assets/images/team.jpg", fit: BoxFit.cover),
+            // smaller circular play button centered
+            Center(
+              child: GestureDetector(
+                onTap: () => setState(() => _isPlaying = true),
+                child: Container(
+                  width: 56, // reduced from 72
+                  height: 56,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.92),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.12),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      )
+                    ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isPlaying = true;
-                      });
-                    },
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.play_arrow,
-                        color: Color(0xFF6B48ED),
-                        size: 36,
-                      ),
-                    ),
+                  child: const Icon(
+                    Icons.play_arrow,
+                    color: Color(0xFF6B48ED),
+                    size: 30, // reduced icon size
                   ),
-                ],
+                ),
               ),
             ),
           ],
@@ -500,23 +520,24 @@ class _CounterSectionState extends State<CounterSection> {
         Text(
           value,
           style: GoogleFonts.poppins(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
+            fontSize: 22,
             color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 6),
         Text(
           label,
           style: GoogleFonts.poppins(
-            fontSize: 14,
-            color: Colors.white.withOpacity(0.9),
+            fontSize: 13,
+            color: Colors.white70,
           ),
         ),
       ],
     );
   }
 }
+
 
 class CurvedBottomClipper extends CustomClipper<Path> {
   @override

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/app_scaffold.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -11,7 +13,7 @@ class HomeScreenState extends State<HomeScreen> {
   String textField2 = '';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       body: SafeArea(
         child: Container(
           constraints: const BoxConstraints.expand(),

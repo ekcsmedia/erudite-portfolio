@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../main.dart';
+import '../../utils/app_scaffold.dart';
 import '../about_us/about_us.dart';
 import '../contact_us_section.dart';
 
@@ -14,7 +15,7 @@ class ServicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(

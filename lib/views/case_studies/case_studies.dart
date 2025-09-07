@@ -2,6 +2,7 @@ import 'package:erudite/views/case_studies/service_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../ai-based/home/faq3.dart';
+import '../../utils/app_scaffold.dart';
 import '../../utils/video_play_drive.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
@@ -28,7 +29,7 @@ class CaseStudiesScreenState extends State<CaseStudiesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(

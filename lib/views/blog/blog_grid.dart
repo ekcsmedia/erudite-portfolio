@@ -2,6 +2,7 @@ import 'package:erudite/views/case_studies/service_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../ai-based/home/faq3.dart';
+import '../../utils/app_scaffold.dart';
 import '../about_us/about_us.dart';
 import '../custom_appbar.dart';
 import 'blog_card.dart';
@@ -15,7 +16,7 @@ class BlogGridScreen extends StatefulWidget {
 class BlogGridScreenState extends State<BlogGridScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(

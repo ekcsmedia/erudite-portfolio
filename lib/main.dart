@@ -1,3 +1,4 @@
+import 'package:erudite/utils/whatapp_widget.dart';
 import 'package:erudite/views/about_us/about_us.dart';
 import 'package:erudite/views/blog/blog_grid.dart';
 import 'package:erudite/views/case_studies/case_studies.dart';
@@ -10,26 +11,39 @@ import 'package:erudite/views/services_details/services_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:ui_web' as ui; // <-- NEW import
-import 'dart:html' show IFrameElement; // explicitly import only IFrameElement
-
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:ui_web' as ui; // only used when kIsWeb is true
+import 'dart:html' show IFrameElement; // only used on web
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // optional
+final RouteObserver<ModalRoute<void>> routeObserver = RouteObserver<ModalRoute<void>>();
 
 void main() {
-  registerMapIframe();
+  _registerMapIframeIfWeb();
   runApp(MyApp());
 }
 
-void registerMapIframe() {
-  // Create the iframe element
-  final map = ui.platformViewRegistry.registerViewFactory(
-    'google-map',
-        (int viewId) => IFrameElement()
-      ..src =
-          "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509458!2d144.96305761531695!3d-37.81627937975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5775c0f5a2a2d2!2sEnvato!5e0!3m2!1sen!2sau!4v1602131234567"
-      ..style.border = '0'
-      ..style.width = '100%'
-      ..style.height = '400px',
-  );
+void _registerMapIframeIfWeb() {
+  if (!kIsWeb) return;
+
+  try {
+    ui.platformViewRegistry.registerViewFactory(
+      'google-map',
+          (int viewId) {
+        final iframe = IFrameElement()
+          ..src =
+              "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509458!2d144.96305761531695!3d-37.81627937975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5775c0f5a2a2d2!2sEnvato!5e0!3m2!1sen!2sau!4v1602131234567"
+          ..style.border = '0'
+          ..style.width = '100%'
+          ..style.height = '400px';
+        return iframe;
+      },
+    );
+  } catch (e) {
+    // It's okay if registration fails (already registered or other issue).
+    // Avoid throwing raw JS objects into Flutter diagnostics.
+    // ignore: avoid_print
+    print('Map iframe registration skipped or failed: $e');
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -52,13 +66,14 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Erudite',
       debugShowCheckedModeBanner: false,
+      navigatorObservers: [routeObserver],
       initialRoute: "/",
       getPages: getPages,
       theme: ThemeData(
-        primaryColor: const Color(0xFF6B48ED), // Bright purple
+        primaryColor: const Color(0xFF6B48ED),
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF6B48ED), // Dark navy
+          backgroundColor: Color(0xFF6B48ED),
           foregroundColor: Colors.white,
         ),
         textTheme: GoogleFonts.poppinsTextTheme().copyWith(
@@ -68,22 +83,11 @@ class MyApp extends StatelessWidget {
         cardColor: const Color(0xFFF5F5F5),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF6A5AFF),
+            backgroundColor: const Color(0xFF6A5AFF),
             foregroundColor: Colors.white,
           ),
         ),
       ),
-      // home: Body()
-      // home: HomeScreen(),
-      // home: Screen(),
-      // home: HomePageAI(),
-      // home: HomeScreen2(),
-      // home : HomeScreen3()  /// this is source for home screen
-      // home: AboutUsPage(),  /// this is source for about us
-      // home : ServiceHomeScreen() /// this is source for services screen
-      // home: ServicesDetailsScreen()
-      //   home : PorfolioHomeScreen()
-// home: HomeScreen()  // use few widget from here for about us
     );
   }
 }

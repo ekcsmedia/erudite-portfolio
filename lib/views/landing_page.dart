@@ -2,6 +2,7 @@ import 'package:erudite/views/seo_growth_section.dart';
 import 'package:erudite/views/services/services_screen.dart';
 import 'package:erudite/views/testimonial_section.dart';
 import 'package:flutter/material.dart';
+import '../utils/app_scaffold.dart';
 import 'about_us/about_us.dart';
 import 'blog/blog_card.dart';
 import 'blogs_news_section.dart';
@@ -20,7 +21,7 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar(),
       body: SingleChildScrollView(

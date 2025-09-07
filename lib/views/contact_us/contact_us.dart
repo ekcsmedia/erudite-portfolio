@@ -3,28 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/widgets.dart' show HtmlElementView;
 
-import '../../main.dart';
+import '../../utils/app_scaffold.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(
           color: const Color(0xFFFFFFFF),
           padding: const EdgeInsets.all(16), // optional
           child: Column(
-          children: const [
-            AboutUsBanner(),
-            ContactInfoSection(),
-            ContactPage(),
-            FooterSection(),
-          ],
-        ),),
+            children: const [
+              AboutUsBanner(),
+              ContactInfoSection(),
+              ContactPage(),
+              FooterSection(),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -127,10 +130,9 @@ class AboutUsBanner extends StatelessWidget {
                           const WidgetSpan(
                             alignment: PlaceholderAlignment.middle, // ✅ align with text
                             child: Padding(
-                              padding:
-                              EdgeInsets.symmetric(horizontal: 4.0),
-                              child: Icon(Icons.double_arrow,
-                                  size: 14, color: Colors.black),
+                              padding: EdgeInsets.symmetric(horizontal: 4.0),
+                              child:
+                              Icon(Icons.double_arrow, size: 14, color: Colors.black),
                             ),
                           ),
                           TextSpan(
@@ -183,10 +185,11 @@ class FooterSection extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SvgPicture.asset(
+                          Image.asset(
                             'assets/images/logo.png',
                             width: 40,
                             height: 30,
+                            fit: BoxFit.contain,
                           ),
                           const SizedBox(height: 10),
                           const Text(
@@ -493,105 +496,125 @@ class ContactInfoCard extends StatelessWidget {
   }
 }
 
-
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      padding: const EdgeInsets.all(32.0),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isNarrow = constraints.maxWidth < 900; // adjust breakpoint as needed
+          if (isNarrow) {
+            // Stack vertically for narrow screens (safe inside SingleChildScrollView)
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const MapWidget(),
+                const SizedBox(height: 24),
+                _contactForm(context),
+              ],
+            );
+          } else {
+            // Side-by-side for wide screens - use fixed/fractional widths (NOT Expanded)
+            final leftWidth = constraints.maxWidth * 0.45;
+            final rightWidth = constraints.maxWidth * 0.45;
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: leftWidth,
+                  child: const MapWidget(),
+                ),
+                const SizedBox(width: 32),
+                SizedBox(
+                  width: rightWidth,
+                  child: _contactForm(context),
+                ),
+              ],
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _contactForm(BuildContext context) {
+    // extracted to a method to avoid repeating code
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Ready To Get Started?",
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          "Get in touch with us today – share your details and message, and let’s start building something amazing together.",
+          style: TextStyle(fontSize: 14, color: Colors.black54),
+        ),
+        const SizedBox(height: 24),
+
+        // Name + Email
+        Row(
           children: [
-            // Left side - Google Map iframe
             Expanded(
-              flex: 1,
-              child: MapWidget(),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Your Name*",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
             ),
-            const SizedBox(width: 32),
-
-            // Right side - Contact Form
+            const SizedBox(width: 16),
             Expanded(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Ready To Get Started?",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Your Email*",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    "Get in touch with us today – share your details and message, and let’s start building something amazing together.",
-                    style: TextStyle(fontSize: 14, color: Colors.black54),
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Name + Email
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            labelText: "Your Name*",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            labelText: "Your Email*",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-
-                  // Message Box
-                  TextField(
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                      labelText: "Write Message*",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Submit Button
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.send),
-                    label: const Text("Send Message"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF6B48ED),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
           ],
         ),
-      );
+        const SizedBox(height: 16),
+
+        // Message Box
+        TextField(
+          maxLines: 5,
+          decoration: InputDecoration(
+            labelText: "Write Message*",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Submit Button
+        ElevatedButton.icon(
+          onPressed: () {},
+          icon: const Icon(Icons.send),
+          label: const Text("Send Message"),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF6B48ED),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
+        )
+      ],
+    );
   }
 }
 
@@ -600,16 +623,19 @@ class MapWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    registerMapIframe(); // make sure iframe is registered
+    // Map view is web-only. Provide a stable fixed height container so layout is deterministic.
+    if (!kIsWeb) {
+      return Container(
+        height: 450,
+        color: Colors.grey[200],
+        child: const Center(child: Text('Map is available on the web build only')),
+      );
+    }
 
     return const SizedBox(
       height: 450,
-      child: HtmlElementView(
-        viewType: 'google-map',
-      ),
+      child: HtmlElementView(viewType: 'google-map'),
     );
   }
 }
-
-
 
